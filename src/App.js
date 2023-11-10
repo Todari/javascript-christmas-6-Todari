@@ -1,5 +1,9 @@
+import MenuRepository from './MenuRepository.js';
+
 class App {
-  async run() {}
+  async run() {
+    console.log(new MenuRepository.get())
+  }
 }
 
 export default App;
