@@ -1,8 +1,15 @@
-import MenuRepository from './MenuRepository.js';
+import OrderController from './OrderController.js';
 
 class App {
+  #orderController;
+
+  constructor() {
+    this.#orderController = new OrderController();
+  }
+
   async run() {
-    console.log(new MenuRepository.get())
+    this.#orderController.startOrder();
+    await this.#orderController.readDate();
   }
 }
 
