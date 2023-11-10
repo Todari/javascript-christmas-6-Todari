@@ -14,4 +14,18 @@ export default class Date {
       throw new DateTypeError(date);
     }
   }
+
+  hasStar() {
+    if (this.#date % 7 === 3 || this.#date === 25) {
+      return true;
+    }
+    return false;
+  }
+
+  isWeekend() {
+    if (this.#date % 7 === 1 || this.#date % 7 === 2) {
+      return true;
+    }
+    return false;
+  }
 }
