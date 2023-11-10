@@ -6,7 +6,7 @@ export default class Date {
 
   constructor(date) {
     this.#validate(date);
-    this.#date = date;
+    this.#date = Number(date);
   }
 
   #validate(date) {
