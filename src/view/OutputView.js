@@ -23,7 +23,11 @@ const OutputView = {
       Console.print(menu);
     });
   },
-  // ...
+
+  printPreviousPrice(price) {
+    Console.print(MESSAGES.printPreviousPrice);
+    Console.print(`${price.toLocaleString('ko-KR')}원\n`);
+  },
 };
 
 export default OutputView;

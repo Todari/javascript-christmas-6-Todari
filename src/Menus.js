@@ -38,7 +38,7 @@ export default class Menus {
     //   }
   }
 
-  get() {
+  list() {
     const string = [];
 
     this.#menus.forEach((value, key) => {
@@ -46,5 +46,14 @@ export default class Menus {
     });
 
     return string;
+  }
+
+  previousPrice() {
+    let price = 0;
+    this.#menus.forEach((value, key) => {
+      price += key.get().price * value;
+    });
+
+    return price;
   }
 }
