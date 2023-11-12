@@ -18,6 +18,8 @@ export default class OrderMenus {
         OutputView.printErrorMessage(error);
       }
     }
+
+    return this.#menus;
   }
 
   #validateInputType(string) {

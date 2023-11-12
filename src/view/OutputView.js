@@ -10,8 +10,15 @@ const OutputView = {
     Console.print(error.message);
   },
 
+  printResultTitle(date) {
+    Console.print(
+      `${MESSAGES.resultTitle.preffix}${date}${MESSAGES.resultTitle.suffix}`,
+    );
+    // ...
+  },
+
   printMenu() {
-    Console.print("<주문 메뉴>");
+    Console.print(MESSAGES.printMenus);
     // ...
   },
   // ...

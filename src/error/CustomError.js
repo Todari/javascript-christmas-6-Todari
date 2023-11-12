@@ -23,3 +23,9 @@ export class MenuNotExistError extends Error {
     super(ERRORS.menuNotExist);
   }
 }
+
+export class MenuAmountError extends Error {
+  constructor() {
+    super(ERRORS.menuAmount);
+  }
+}
