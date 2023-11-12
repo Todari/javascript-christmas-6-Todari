@@ -7,7 +7,7 @@ const MESSAGES = Object.freeze({
 
   resultTitle: {
     preffix: '12월 ',
-    suffix: '일에 우테코 식당에서 받을 이벤트 혜택 비리 보기! \n',
+    suffix: '일에 우테코 식당에서 받을 이벤트 혜택 미리 보기! \n',
   },
 
   printMenus: '<주문 메뉴>',

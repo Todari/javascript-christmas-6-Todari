@@ -26,4 +26,25 @@ export default class Menus {
       throw new MenuAmountError();
     }
   }
+
+  #validateOnlyBeverage() {
+    //   let amount = 0;
+    //   this.#menus.forEach(value => {
+    //     amount += value;
+    //   });
+
+    //   if (amount > 20) {
+    //     throw new MenuAmountError();
+    //   }
+  }
+
+  get() {
+    const string = [];
+
+    this.#menus.forEach((value, key) => {
+      string.push(`${key.get().name} ${value}개`);
+    });
+
+    return string;
+  }
 }

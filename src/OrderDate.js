@@ -15,5 +15,7 @@ export default class OrderDate {
         OutputView.printErrorMessage(error);
       }
     }
+
+    return this.#date;
   }
 }

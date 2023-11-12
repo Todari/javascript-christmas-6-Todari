@@ -14,6 +14,7 @@ export default class OrderController {
   async startOrder() {
     const date = await this.#orderDate.readDate();
     const menus = await this.#orderMenus.readMenus();
+    
     const order = new Order(date, menus);
   }
 }

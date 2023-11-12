@@ -17,9 +17,11 @@ const OutputView = {
     // ...
   },
 
-  printMenu() {
+  printMenu(menus) {
     Console.print(MESSAGES.printMenus);
-    // ...
+    menus.forEach(menu => {
+      Console.print(menu);
+    });
   },
   // ...
 };

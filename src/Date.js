@@ -28,4 +28,8 @@ export default class Date {
     }
     return false;
   }
+
+  get() {
+    return this.#date;
+  }
 }

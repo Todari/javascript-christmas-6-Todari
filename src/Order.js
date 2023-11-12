@@ -7,9 +7,15 @@ export default class Order {
   constructor(date, menus) {
     this.#date = date;
     this.#menus = menus;
+    this.printResults(this.#date.get());
+    this.printMenus(this.#menus.get());
   }
 
-  printResults() {
-    OutputView.printResultTitle();
+  printResults(date) {
+    OutputView.printResultTitle(date);
+  }
+
+  printMenus(menus) {
+    OutputView.printMenu(menus);
   }
 }
