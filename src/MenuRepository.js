@@ -1,17 +1,18 @@
 import MENU_LIST from './constant/MenuList.js';
+import { MenuNotExistError } from './error/CustomError.js';
 import Menu from './Menu.js';
 
 export default class MenuRepository {
-  #menuRepository;
+  #menus;
 
   constructor() {
-    this.#menuRepository = [];
+    this.#menus = [];
     this.#initMenuRepository();
   }
 
   #initMenuRepository() {
     Object.keys(MENU_LIST).forEach(key => {
-      this.#menuRepository.push(
+      this.#menus.push(
         new Menu(
           MENU_LIST[key].name,
           MENU_LIST[key].type,
@@ -21,18 +22,20 @@ export default class MenuRepository {
     });
   }
 
-  get() {
-    this.#menuRepository.forEach(menu => {
-      menu.get();
+  isExistMenu(name) {
+    this.#menus.some(menu => {
+      if (menu.getInfo().name === name) {
+        return true;
+      }
+      return false;
     });
   }
 
-  isIncludedMenu(name) {
-    this.#menuRepository.forEach(menu => {
-      if (menu.getInfo.name === name) {
-        return true;
+  getMenuByName(name) {
+    this.#menus.some(menu => {
+      if (menu.getInfo().name === name) {
+        return menu;
       }
     });
-    return false;
   }
 }

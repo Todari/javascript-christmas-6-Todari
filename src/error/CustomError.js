@@ -7,3 +7,21 @@ export class DateTypeError extends Error {
     super(errorMessage(ERRORS.dateType, input));
   }
 }
+
+export class MenuTypeError extends Error {
+  constructor(input) {
+    super(errorMessage(ERRORS.menuType, input));
+  }
+}
+
+export class MenuDuplicatedError extends Error {
+  constructor(input) {
+    super(errorMessage(ERRORS.menuDuplicated, input));
+  }
+}
+
+export class MenuNotExistError extends Error {
+  constructor(input) {
+    super(errorMessage(ERRORS.menuNotExist, input));
+  }
+}

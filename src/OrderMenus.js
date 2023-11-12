@@ -1,23 +1,18 @@
-import Menu from './Menu.js';
-import MenuRepository from './MenuRepository.js';
+import Menus from './Menus.js';
+import REGEXP from './constant/RegExp.js';
+import { MenuTypeError } from './error/CustomError.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
 export default class OrderMenus {
-  #menuRepository;
-  #orderMenus;
-
-  constructor() {
-    this.#menuRepository = new MenuRepository();
-    this.#orderMenus = new Map();
-  }
+  #menus;
 
   async readMenus() {
     while (true) {
       const menus = await InputView.readMenus();
       try {
-
-        this.stringToMenus(menus);
+        this.#validate(menus);
+        this.#menus = this.#stringToMenus(menus);
         break;
       } catch (error) {
         OutputView.printErrorMessage(error);
@@ -25,19 +20,31 @@ export default class OrderMenus {
     }
   }
 
-  #menuIncludedValidate(menu) {
-    if (!this.#menuRepository.isIncludedMenu(menu)) {
-      // throw 
+  #validate(string) {
+    if (!REGEXP.menus.test(string)) {
+      throw new MenuTypeError();
     }
   }
 
-  stringToMenus(string) {
+  #menuDuplicatedValidate(inputLength, resultLength) {
+    if (inputLength !== resultLength) {
+      throw new MenuTypeError();
+    }
+  }
+
+  #stringToMenus(string) {
+    const menus = {};
     string.split(',').forEach(menuInfo => {
       const menu = menuInfo.split('-')[0];
-      const amount = Number(menuInfo.split('-')[1]);
+      const amount = menuInfo.split('-')[1];
 
-      this.#menuIncludedValidate(menu);
-      this.#orderMenus[new Menu(menu)] = amount;
+      menus[`${menu}`] = Number(amount);
     });
+
+    this.#menuDuplicatedValidate(
+      string.split(',').length,
+      Object.keys(menus).length,
+    );
+    return new Menus(menus);
   }
 }

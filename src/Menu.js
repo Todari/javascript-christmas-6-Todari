@@ -12,10 +12,4 @@ export default class Menu {
   getInfo() {
     return { type: this.#type, name: this.#name, price: this.#price };
   }
-
-  #menuTypeValidate(menus) {
-    if (!REGEXP.menus.test(menus)) {
-      // throw
-    }
-  }
 }
