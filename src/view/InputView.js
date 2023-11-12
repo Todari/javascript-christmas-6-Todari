@@ -6,6 +6,11 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGES.readDate);
     return input;
   },
+
+  async readMenus() {
+    const input = await Console.readLineAsync(MESSAGES.readMenus);
+    return input;
+  },
   // ...
 };
 

@@ -28,7 +28,7 @@ export default class MenuRepository {
   }
 
   isIncludedMenu(name) {
-    MenuRepository.forEach(menu => {
+    this.#menuRepository.forEach(menu => {
       if (menu.getInfo.name === name) {
         return true;
       }

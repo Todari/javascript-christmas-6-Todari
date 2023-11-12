@@ -13,5 +13,6 @@ export default class OrderController {
 
   async startOrder() {
     await this.#orderDate.readDate();
+    await this.#orderMenus.readMenus();
   }
 }
