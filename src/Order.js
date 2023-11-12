@@ -1,6 +1,3 @@
-// import InputView from './view/InputView.js';
-import OutputView from './view/OutputView.js';
-
 export default class Order {
   #date;
   #menus;
@@ -9,11 +6,5 @@ export default class Order {
   constructor(date, menus) {
     this.#date = date;
     this.#menus = menus;
-  }
-
-
-
-  startOrder() {
-    OutputView.printStartOrder();
   }
 }

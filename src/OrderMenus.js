@@ -11,7 +11,7 @@ export default class OrderMenus {
     while (true) {
       const menus = await InputView.readMenus();
       try {
-        this.#validate(menus);
+        this.#validateInputType(menus);
         this.#menus = this.#stringToMenus(menus);
         break;
       } catch (error) {
@@ -20,13 +20,13 @@ export default class OrderMenus {
     }
   }
 
-  #validate(string) {
+  #validateInputType(string) {
     if (!REGEXP.menus.test(string)) {
       throw new MenuTypeError();
     }
   }
 
-  #menuDuplicatedValidate(inputLength, resultLength) {
+  #validateMenuDuplicated(inputLength, resultLength) {
     if (inputLength !== resultLength) {
       throw new MenuTypeError();
     }
@@ -41,7 +41,7 @@ export default class OrderMenus {
       menus[`${menu}`] = Number(amount);
     });
 
-    this.#menuDuplicatedValidate(
+    this.#validateMenuDuplicated(
       string.split(',').length,
       Object.keys(menus).length,
     );

@@ -9,7 +9,7 @@ export default class Menu {
     this.#price = price;
   }
 
-  getInfo() {
+  get() {
     return { type: this.#type, name: this.#name, price: this.#price };
   }
 }

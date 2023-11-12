@@ -1,27 +1,25 @@
 import ERRORS from '../constant/Errors.js';
 
-const errorMessage = (message, input) => `${message} 입력값 : ${input}`;
-
 export class DateTypeError extends Error {
-  constructor(input) {
-    super(errorMessage(ERRORS.dateType, input));
+  constructor() {
+    super(ERRORS.dateType);
   }
 }
 
 export class MenuTypeError extends Error {
-  constructor(input) {
-    super(errorMessage(ERRORS.menuType, input));
+  constructor() {
+    super(ERRORS.menuType);
   }
 }
 
 export class MenuDuplicatedError extends Error {
-  constructor(input) {
-    super(errorMessage(ERRORS.menuDuplicated, input));
+  constructor() {
+    super(ERRORS.menuDuplicated);
   }
 }
 
 export class MenuNotExistError extends Error {
-  constructor(input) {
-    super(errorMessage(ERRORS.menuNotExist, input));
+  constructor() {
+    super(ERRORS.menuNotExist);
   }
 }

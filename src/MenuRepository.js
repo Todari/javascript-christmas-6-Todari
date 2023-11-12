@@ -22,20 +22,11 @@ export default class MenuRepository {
     });
   }
 
-  isExistMenu(name) {
-    this.#menus.some(menu => {
-      if (menu.getInfo().name === name) {
-        return true;
-      }
-      return false;
-    });
-  }
-
   getMenuByName(name) {
-    this.#menus.some(menu => {
-      if (menu.getInfo().name === name) {
-        return menu;
-      }
-    });
+    const result = this.#menus.find(menu => menu.get().name === name);
+    if (result === undefined) {
+      throw new MenuNotExistError();
+    }
+    return result;
   }
 }

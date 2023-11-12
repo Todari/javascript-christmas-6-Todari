@@ -5,11 +5,11 @@ export default class Date {
   #date;
 
   constructor(date) {
-    this.#validate(date);
+    this.#validateDateType(date);
     this.#date = Number(date);
   }
 
-  #validate(date) {
+  #validateDateType(date) {
     if (!REGEXP.date.test(date) || Number(date) < 1 || Number(date) > 31) {
       throw new DateTypeError(date);
     }
