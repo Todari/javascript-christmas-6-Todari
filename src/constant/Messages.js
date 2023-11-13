@@ -29,6 +29,12 @@ const MESSAGES = Object.freeze({
   printEventAmounts: '\n<총혜택 금액>',
   printTotalPrice: '\n<할인 후 예상 결제 금액>',
   printEventBadge: '\n<12월 이벤트 뱃지>',
+
+  badge: {
+    star: '별',
+    tree: '트리',
+    santa: '산타',
+  },
 });
 
 export default MESSAGES;

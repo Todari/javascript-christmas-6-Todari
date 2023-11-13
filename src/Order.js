@@ -17,6 +17,7 @@ export default class Order {
     this.printEvents(this.#event, this.#date, this.#menus);
     this.printEventAmounts();
     this.printTotalPrice();
+    this.printBadge();
   }
 
   printResultTitle() {
@@ -49,5 +50,9 @@ export default class Order {
     OutputView.printTotalPrice(
       this.#menus.previousPrice() + this.#event.totalEventDiscount(),
     );
+  }
+
+  printBadge() {
+    OutputView.printBadge(this.#event.totalEventAmout(this.#menus));
   }
 }

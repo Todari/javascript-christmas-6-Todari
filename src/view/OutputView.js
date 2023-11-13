@@ -82,6 +82,23 @@ const OutputView = {
     Console.print(MESSAGES.printTotalPrice);
     Console.print(`${amount.toLocaleString('ko-KR')}원`);
   },
+
+  printBadge(amount) {
+    Console.print(MESSAGES.printEventBadge);
+    switch (true) {
+      case amount <= -20000:
+        Console.print(MESSAGES.badge.santa);
+        break;
+      case amount <= -10000:
+        Console.print(MESSAGES.badge.tree);
+        break;
+      case amount <= -5000:
+        Console.print(MESSAGES.badge.star);
+        break;
+      default:
+        Console.print(MESSAGES.printNoEvents);
+    }
+  },
 };
 
 export default OutputView;
