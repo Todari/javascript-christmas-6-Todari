@@ -1,5 +1,5 @@
 import MenuRepository from './MenuRepository.js';
-import { MenuAmountError } from './error/CustomError.js';
+import { MenuAmountError, MenuOnlyBeverageError } from './error/CustomError.js';
 
 export default class Menus {
   #menuRepository;
@@ -14,6 +14,7 @@ export default class Menus {
     });
 
     this.#validateAmounts();
+    this.#validateOnlyBeverage();
   }
 
   #validateAmounts() {
