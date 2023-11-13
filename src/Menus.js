@@ -14,7 +14,7 @@ export default class Menus {
     });
 
     this.#validateAmounts();
-    this.#validateOnlyBeverage();
+    // this.#validateOnlyBeverage();
   }
 
   #validateAmounts() {

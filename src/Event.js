@@ -23,13 +23,19 @@ export default class Event {
     return amount;
   }
 
-  weekdayDiscount(menus) {
+  printWeekDiscount(date, menus) {
+    date.isWeekend()
+      ? OutputView.printWeekendDiscount(this.#weekendDiscount(menus))
+      : OutputView.printWeekdayDiscount(this.#weekdayDiscount(menus));
+  }
+
+  #weekdayDiscount(menus) {
     const amount = -2023 * menus.types().dessert;
     this.#eventAmount += amount;
     return amount;
   }
 
-  weekendDiscount(menus) {
+  #weekendDiscount(menus) {
     const amount = -2023 * menus.types().main;
     this.#eventAmount += amount;
 
@@ -60,10 +66,7 @@ export default class Event {
     if (date.get() <= 25) {
       OutputView.printChristmasDiscount(this.christmasDiscount(date));
     }
-    date.isWeekend()
-      ? OutputView.printWeekendDiscount(this.weekendDiscount(menus))
-      : OutputView.printWeekdayDiscount(this.weekdayDiscount(menus));
-
+    this.printWeekDiscount(date, menus);
     if (date.hasStar()) {
       OutputView.printSpecialDiscount(this.specialDiscount(date));
     }

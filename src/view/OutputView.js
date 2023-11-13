@@ -41,6 +41,10 @@ const OutputView = {
     Console.print(MESSAGES.printEvents);
   },
 
+  printNoEvent() {
+    Console.print(MESSAGES.printNoEvent);
+  },
+
   printChristmasDiscount(amount) {
     Console.print(
       `${MESSAGES.christmasDiscount}${amount.toLocaleString('ko-KR')}원`,
