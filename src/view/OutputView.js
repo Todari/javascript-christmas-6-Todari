@@ -26,7 +26,14 @@ const OutputView = {
 
   printPreviousPrice(price) {
     Console.print(MESSAGES.printPreviousPrice);
-    Console.print(`${price.toLocaleString('ko-KR')}원\n`);
+    Console.print(`${price.toLocaleString('ko-KR')}원`);
+  },
+
+  printPresent(canPresent) {
+    Console.print(MESSAGES.printPresents);
+    Console.print(
+      canPresent ? MESSAGES.presentChampagne : MESSAGES.printNoEvents,
+    );
   },
 };
 

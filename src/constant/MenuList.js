@@ -11,7 +11,7 @@ const MENU_LIST = Object.freeze({
   chocolateCake: { name: '초코케이크', type: 'dessert', price: 15000 },
   iceCream: { name: '아이스크림', type: 'dessert', price: 5000 },
 
-  cokeZero: { name: '제로콜라', type: 'beverage', price: 5000 },
+  cokeZero: { name: '제로콜라', type: 'beverage', price: 3000 },
   redWine: { name: '레드와인', type: 'beverage', price: 60000 },
   champagne: { name: '샴페인', type: 'beverage', price: 25000 },
 });

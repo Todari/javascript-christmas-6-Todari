@@ -12,6 +12,10 @@ const MESSAGES = Object.freeze({
 
   printMenus: '\n<주문 메뉴>',
   printPreviousPrice: '\n<할인 전 총주문 금액>',
+  printPresents: '\n<증정 메뉴>',
+  presentChampagne: '샴페인 1개',
+
+  printNoEvents: '없음',
 });
 
 export default MESSAGES;

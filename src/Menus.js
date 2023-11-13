@@ -56,4 +56,24 @@ export default class Menus {
 
     return price;
   }
+
+  canApplyEvent() {
+    if (this.previousPrice() > 10000) {
+      return true;
+    }
+    return false;
+  }
+
+  types() {
+    const types = {};
+    this.#menus.forEach((value, key) => {
+      if (isNaN(types[key.get().type])) {
+        types[key.get().type] = value;
+      } else {
+        types[key.get().type] += value;
+      }
+    });
+
+    return types;
+  }
 }
