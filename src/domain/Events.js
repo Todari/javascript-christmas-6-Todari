@@ -1,5 +1,5 @@
-import MESSAGES from './constant/Messages.js';
-import Event from './Event.js';
+import MESSAGES from '../constant/Messages.js';
+import Event from '../model/Event.js';
 
 export default class Events {
   #date;

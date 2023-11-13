@@ -1,10 +1,10 @@
 import Menus from './Menus.js';
-import Date from './Date.js';
+import Date from '../model/Date.js';
 import Order from './Order.js';
-import OutputView from './view/OutputView.js';
-import InputView from './view/InputView.js';
-import { MenuDuplicatedError, MenuTypeError } from './error/CustomError.js';
-import REGEXP from './constant/RegExp.js';
+import OutputView from '../view/OutputView.js';
+import InputView from '../view/InputView.js';
+import { MenuDuplicatedError, MenuTypeError } from '../error/CustomError.js';
+import REGEXP from '../constant/RegExp.js';
 
 export default class GetOrder {
   #order;

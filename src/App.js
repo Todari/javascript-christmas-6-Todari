@@ -1,4 +1,4 @@
-import GetOrder from './GetOrder.js';
+import GetOrder from './domain/GetOrder.js';
 
 class App {
   #getOrder;

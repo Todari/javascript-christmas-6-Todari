@@ -1,5 +1,8 @@
-import MenuRepository from './MenuRepository.js';
-import { MenuAmountError, MenuOnlyBeverageError } from './error/CustomError.js';
+import MenuRepository from '../repository/MenuRepository.js';
+import {
+  MenuAmountError,
+  MenuOnlyBeverageError,
+} from '../error/CustomError.js';
 
 export default class Menus {
   #menuRepository;

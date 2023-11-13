@@ -1,4 +1,4 @@
-import OutputView from './view/OutputView.js';
+import OutputView from '../view/OutputView.js';
 import Events from './Events.js';
 
 export default class Order {

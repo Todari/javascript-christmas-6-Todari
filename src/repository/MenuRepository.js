@@ -1,6 +1,6 @@
-import MENU_LIST from './constant/MenuList.js';
-import { MenuNotExistError } from './error/CustomError.js';
-import Menu from './Menu.js';
+import MENU_LIST from '../constant/MenuList.js';
+import { MenuNotExistError } from '../error/CustomError.js';
+import Menu from '../model/Menu.js';
 
 export default class MenuRepository {
   #menus;

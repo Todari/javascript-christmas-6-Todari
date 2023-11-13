@@ -1,5 +1,5 @@
-import REGEXP from './constant/RegExp.js';
-import { DateTypeError } from './error/CustomError.js';
+import REGEXP from '../constant/RegExp.js';
+import { DateTypeError } from '../error/CustomError.js';
 
 export default class Date {
   #date;
