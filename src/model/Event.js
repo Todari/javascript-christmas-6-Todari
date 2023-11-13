@@ -1,3 +1,6 @@
+import MESSAGES from '../constant/Messages.js';
+import SETTING from '../constant/Setting.js';
+
 export default class Event {
   #type;
   #status;
@@ -26,6 +29,8 @@ export default class Event {
   }
 
   print() {
-    return `${this.#type}: ${this.#amount.toLocaleString('ko-KR')}원`;
+    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${
+      MESSAGES.krWon
+    }`;
   }
 }

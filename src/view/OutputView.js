@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import MESSAGES from '../constant/Messages.js';
+import SETTING from '../constant/Setting.js';
 
 const OutputView = {
   printStartOrder() {
@@ -18,7 +19,7 @@ const OutputView = {
 
   printPreviousPrice(price) {
     Console.print(MESSAGES.previousPriceTitle);
-    Console.print(`${price.toLocaleString('ko-KR')}원`);
+    Console.print(`${price.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
   },
 
   printPresent(present) {
@@ -42,12 +43,12 @@ const OutputView = {
 
   printEventAmount(amount) {
     Console.print(MESSAGES.eventAmountTitle);
-    Console.print(`${amount.toLocaleString('ko-KR')}원`);
+    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
   },
 
   printTotalPrice(amount) {
     Console.print(MESSAGES.totalPriceTitle);
-    Console.print(`${amount.toLocaleString('ko-KR')}원`);
+    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
   },
 
   printEventBadge(badge) {

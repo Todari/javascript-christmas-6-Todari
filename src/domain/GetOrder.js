@@ -5,6 +5,7 @@ import OutputView from '../view/OutputView.js';
 import InputView from '../view/InputView.js';
 import { MenuDuplicatedError, MenuTypeError } from '../error/CustomError.js';
 import REGEXP from '../constant/RegExp.js';
+import SETTING from '../constant/Setting.js';
 
 export default class GetOrder {
   #order;
@@ -52,14 +53,14 @@ export default class GetOrder {
 
   #stringToMenus(string) {
     const menus = {};
-    string.split(',').forEach(menuInfo => {
-      const menu = menuInfo.split('-')[0];
-      const amount = menuInfo.split('-')[1];
+    string.split(SETTING.menuSplit).forEach(menuInfo => {
+      const menu = menuInfo.split(SETTING.menuAmountSplit)[0];
+      const amount = menuInfo.split(SETTING.menuAmountSplit)[1];
       menus[`${menu}`] = Number(amount);
     });
 
     this.#validateMenuDuplicated(
-      string.split(',').length,
+      string.split(SETTING.menuSplit).length,
       Object.keys(menus).length,
     );
 

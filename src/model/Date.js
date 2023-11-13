@@ -1,4 +1,5 @@
 import REGEXP from '../constant/RegExp.js';
+import SETTING from '../constant/Setting.js';
 import { DateTypeError } from '../error/CustomError.js';
 
 export default class Date {
@@ -10,20 +11,30 @@ export default class Date {
   }
 
   #validateDateType(date) {
-    if (!REGEXP.date.test(date) || Number(date) < 1 || Number(date) > 31) {
+    if (
+      !REGEXP.date.test(date) ||
+      Number(date) < SETTING.date.minimun ||
+      Number(date) > SETTING.date.maximum
+    ) {
       throw new DateTypeError(date);
     }
   }
 
   hasStar() {
-    if (this.#date % 7 === 3 || this.#date === 25) {
+    if (
+      this.#date % SETTING.weekDays === SETTING.date.sunday ||
+      this.#date === SETTING.date.christmas
+    ) {
       return true;
     }
     return false;
   }
 
   isWeekend() {
-    if (this.#date % 7 === 1 || this.#date % 7 === 2) {
+    if (
+      this.#date % SETTING.weekDays === SETTING.date.friday ||
+      this.#date % SETTING.weekDays === SETTING.date.saturday
+    ) {
       return true;
     }
     return false;

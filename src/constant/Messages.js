@@ -36,6 +36,7 @@ const MESSAGES = Object.freeze({
   },
 
   krWon: '원',
+  amount: '개',
 });
 
 export default MESSAGES;

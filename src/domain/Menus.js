@@ -3,6 +3,7 @@ import {
   MenuAmountError,
   MenuOnlyBeverageError,
 } from '../error/CustomError.js';
+import SETTING from '../constant/Setting.js';
 
 export default class Menus {
   #menuRepository;
@@ -26,7 +27,7 @@ export default class Menus {
       amount += value;
     });
 
-    if (amount > 20) {
+    if (amount > SETTING.maximumMenusAmount) {
       throw new MenuAmountError();
     }
   }
@@ -57,7 +58,7 @@ export default class Menus {
   }
 
   canApplyEvent() {
-    if (this.previousPrice() > 10000) {
+    if (this.previousPrice() > SETTING.minimumApplyEventPrice) {
       return true;
     }
     return false;

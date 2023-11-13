@@ -1,4 +1,6 @@
+import MENU_LIST from '../constant/MenuList.js';
 import MESSAGES from '../constant/Messages.js';
+import SETTING from '../constant/Setting.js';
 import Event from '../model/Event.js';
 
 export default class Events {
@@ -36,7 +38,8 @@ export default class Events {
       this.#events.christmasDiscount.setStatus(true);
     }
     this.#events.christmasDiscount.setAmount(
-      -1000 - 100 * (this.#date.get() - 1),
+      SETTING.christmasDiscount.default
+      + SETTING.christmasDiscount.forDay * (this.#date.get() - 1),
     );
   }
 
@@ -44,28 +47,34 @@ export default class Events {
     if (!this.#date.isWeekend()) {
       this.#events.weekdayDiscount.setStatus(true);
     }
-    this.#events.weekdayDiscount.setAmount(-2023 * this.#menus.types().dessert);
+    this.#events.weekdayDiscount.setAmount(
+      SETTING.weekDiscount * this.#menus.types().dessert,
+    );
   }
 
   #setWeekendDiscount() {
     if (this.#date.isWeekend()) {
       this.#events.weekendDiscount.setStatus(true);
     }
-    this.#events.weekendDiscount.setAmount(-2023 * this.#menus.types().main);
+    this.#events.weekendDiscount.setAmount(
+      SETTING.weekDiscount * this.#menus.types().main,
+    );
   }
 
   #setSpecialDiscount() {
     if (this.#date.hasStar()) {
       this.#events.specialDiscount.setStatus(true);
     }
-    this.#events.specialDiscount.setAmount(-1000);
+    this.#events.specialDiscount.setAmount(SETTING.specialDiscount);
   }
 
   #setPresentChampagne() {
-    if (this.#menus.previousPrice() >= 120000) {
+    if (this.#menus.previousPrice() >= SETTING.minimumPresentPrice) {
       this.#events.presentChampagne.setStatus(true);
     }
-    this.#events.presentChampagne.setAmount(-25000);
+    this.#events.presentChampagne.setAmount(
+      -MENU_LIST[SETTING.presentMenu].price,
+    );
   }
 
   present() {
@@ -89,7 +98,7 @@ export default class Events {
   totalPrice() {
     let price = this.#menus.previousPrice() + this.totalEventAmount();
     if (this.#events.presentChampagne.getStatus()) {
-      price += 25000;
+      price += MENU_LIST[SETTING.presentMenu].price;
     }
 
     return price;
@@ -98,11 +107,11 @@ export default class Events {
   eventBadge() {
     const amount = this.totalEventAmount();
     switch (true) {
-      case amount <= -20000:
+      case amount <= SETTING.minimumAmountBadge.santa:
         return MESSAGES.badge.santa;
-      case amount <= -10000:
+      case amount <= SETTING.minimumAmountBadge.tree:
         return MESSAGES.badge.tree;
-      case amount <= -5000:
+      case amount <= SETTING.minimumAmountBadge.star:
         return MESSAGES.badge.star;
       default:
         return MESSAGES.printNoEvent;
