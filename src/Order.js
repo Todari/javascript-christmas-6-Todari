@@ -10,37 +10,44 @@ export default class Order {
     this.#date = date;
     this.#menus = menus;
     this.#event = new Event();
-    this.printResultTitle(this.#date.get());
-    this.printMenus(this.#menus.list());
-    this.printPreviousPrice(this.#menus.previousPrice());
+    this.printResultTitle();
+    this.printMenus();
+    this.printPreviousPrice();
     this.printPresent(this.#menus);
     this.printEvents(this.#event, this.#date, this.#menus);
-    this.printEventAmounts(this.#event);
+    this.printEventAmounts();
+    this.printTotalPrice();
   }
 
-  printResultTitle(date) {
-    OutputView.printResultTitle(date);
+  printResultTitle() {
+    OutputView.printResultTitle(this.#date.get());
   }
 
-  printMenus(menus) {
-    OutputView.printMenu(menus);
+  printMenus() {
+    OutputView.printMenu(this.#menus.list());
   }
 
-  printPreviousPrice(price) {
-    OutputView.printPreviousPrice(price);
+  printPreviousPrice() {
+    OutputView.printPreviousPrice(this.#menus.previousPrice());
   }
 
-  printPresent(price) {
-    const canPresent = this.#event.canPresentChampagne(price);
+  printPresent() {
+    const canPresent = this.#event.canPresentChampagne(this.#menus);
     OutputView.printPresent(canPresent);
   }
 
-  printEvents(event, date, menus) {
+  printEvents() {
     OutputView.printEvents();
-    event.printEvents(date, menus);
+    this.#event.printEvents(this.#date, this.#menus);
   }
 
-  printEventAmounts(event) {
-    OutputView.printEventAmounts(event.totalEventAmout());
+  printEventAmounts() {
+    OutputView.printEventAmounts(this.#event.totalEventAmout(this.#menus));
+  }
+
+  printTotalPrice() {
+    OutputView.printTotalPrice(
+      this.#menus.previousPrice() + this.#event.totalEventDiscount(),
+    );
   }
 }

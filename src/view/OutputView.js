@@ -77,6 +77,11 @@ const OutputView = {
     Console.print(MESSAGES.printEventAmounts);
     Console.print(`${amount.toLocaleString('ko-KR')}원`);
   },
+
+  printTotalPrice(amount) {
+    Console.print(MESSAGES.printTotalPrice);
+    Console.print(`${amount.toLocaleString('ko-KR')}원`);
+  },
 };
 
 export default OutputView;

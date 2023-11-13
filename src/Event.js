@@ -10,8 +10,6 @@ export default class Event {
 
   canPresentChampagne(menus) {
     if (menus.previousPrice() >= 120000) {
-      this.#eventAmount -= MENU_LIST.champagne.price;
-
       return true;
     }
 
@@ -19,20 +17,15 @@ export default class Event {
   }
 
   christmasDiscount(date) {
-    if (date.get() <= 25) {
-      const amount = -1000 - 100 * (date.get() - 1);
-      this.#eventAmount += amount;
+    const amount = -1000 - 100 * (date.get() - 1);
+    this.#eventAmount += amount;
 
-      return amount;
-    }
-
-    return 0;
+    return amount;
   }
 
   weekdayDiscount(menus) {
     const amount = -2023 * menus.types().dessert;
     this.#eventAmount += amount;
-
     return amount;
   }
 
@@ -47,28 +40,34 @@ export default class Event {
     if (date.hasStar()) {
       const amount = -1000;
       this.#eventAmount += amount;
+
       return amount;
     }
-
-    return 0;
   }
 
-  totalEventAmout() {
+  totalEventAmout(menus) {
+    if (this.canPresentChampagne(menus)) {
+      return this.#eventAmount - MENU_LIST.champagne.price;
+    }
+    return this.#eventAmount;
+  }
+
+  totalEventDiscount() {
     return this.#eventAmount;
   }
 
   printEvents(date, menus) {
-    if (this.christmasDiscount(date) !== 0) {
+    if (date.get() <= 25) {
       OutputView.printChristmasDiscount(this.christmasDiscount(date));
     }
     date.isWeekend()
       ? OutputView.printWeekendDiscount(this.weekendDiscount(menus))
       : OutputView.printWeekdayDiscount(this.weekdayDiscount(menus));
 
-    if (this.specialDiscount(date) !== 0) {
+    if (date.hasStar()) {
       OutputView.printSpecialDiscount(this.specialDiscount(date));
     }
-    if (this.canPresentChampagne(menus)) {
+    if (menus.previousPrice() >= 12000) {
       OutputView.printPresentDiscount();
     }
   }

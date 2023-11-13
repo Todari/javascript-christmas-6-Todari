@@ -27,6 +27,8 @@ const MESSAGES = Object.freeze({
   presentDiscount: '증정 이벤트: ',
 
   printEventAmounts: '\n<총혜택 금액>',
+  printTotalPrice: '\n<할인 후 예상 결제 금액>',
+  printEventBadge: '\n<12월 이벤트 뱃지>',
 });
 
 export default MESSAGES;

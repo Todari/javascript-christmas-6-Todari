@@ -8,7 +8,7 @@ class App {
   }
 
   async run() {
-    this.#orderController.startOrder();
+    await this.#orderController.startOrder();
   }
 }
 
