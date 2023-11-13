@@ -1,3 +1,5 @@
+import MENU_LIST from './MenuList.js';
+
 const MESSAGES = Object.freeze({
   startOrder: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
   readDate:
@@ -16,6 +18,13 @@ const MESSAGES = Object.freeze({
   presentChampagne: '샴페인 1개',
 
   printNoEvents: '없음',
+
+  printEvents: '\n<혜택 내역>',
+  christmasDiscount: '크리스마스 디데이 할인: ',
+  weekdayDiscount: '평일 할인: ',
+  weekendDiscount: '주말 할인: ',
+  specialDiscount: '특별 할인: ',
+  presentDiscount: '증정 이벤트: ',
 });
 
 export default MESSAGES;
