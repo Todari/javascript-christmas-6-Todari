@@ -29,3 +29,9 @@ export class MenuAmountError extends Error {
     super(ERRORS.menuAmount);
   }
 }
+
+export class MenuOnlyBeverageError extends Error {
+  constructor() {
+    super(ERRORS.menuOnlyBeverage);
+  }
+}

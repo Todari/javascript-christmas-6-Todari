@@ -28,14 +28,9 @@ export default class Menus {
   }
 
   #validateOnlyBeverage() {
-    //   let amount = 0;
-    //   this.#menus.forEach(value => {
-    //     amount += value;
-    //   });
-
-    //   if (amount > 20) {
-    //     throw new MenuAmountError();
-    //   }
+    if (this.types().main + this.types().baverage === 0) {
+      throw new MenuOnlyBeverageError();
+    }
   }
 
   list() {
@@ -65,13 +60,9 @@ export default class Menus {
   }
 
   types() {
-    const types = {};
+    const types = { main: 0, baverage: 0, dessert: 0 };
     this.#menus.forEach((value, key) => {
-      if (isNaN(types[key.get().type])) {
-        types[key.get().type] = value;
-      } else {
-        types[key.get().type] += value;
-      }
+      types[key.get().type] += value;
     });
 
     return types;
