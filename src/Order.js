@@ -15,6 +15,7 @@ export default class Order {
     this.printPreviousPrice(this.#menus.previousPrice());
     this.printPresent(this.#menus);
     this.printEvents(this.#event, this.#date, this.#menus);
+    this.printEventAmounts(this.#event);
   }
 
   printResultTitle(date) {
@@ -37,5 +38,9 @@ export default class Order {
   printEvents(event, date, menus) {
     OutputView.printEvents();
     event.printEvents(date, menus);
+  }
+
+  printEventAmounts(event) {
+    OutputView.printEventAmounts(event.totalEventAmout());
   }
 }

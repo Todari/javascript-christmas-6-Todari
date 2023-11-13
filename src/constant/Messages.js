@@ -25,6 +25,8 @@ const MESSAGES = Object.freeze({
   weekendDiscount: '주말 할인: ',
   specialDiscount: '특별 할인: ',
   presentDiscount: '증정 이벤트: ',
+
+  printEventAmounts: '\n<총혜택 금액>',
 });
 
 export default MESSAGES;

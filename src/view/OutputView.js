@@ -72,6 +72,11 @@ const OutputView = {
       )}원`,
     );
   },
+
+  printEventAmounts(amount) {
+    Console.print(MESSAGES.printEventAmounts);
+    Console.print(`${amount.toLocaleString('ko-KR')}원`);
+  },
 };
 
 export default OutputView;

@@ -2,15 +2,15 @@ import MENU_LIST from './constant/MenuList.js';
 import OutputView from './view/OutputView.js';
 
 export default class Event {
-  #eventPrice;
+  #eventAmount;
 
   constructor() {
-    this.#eventPrice = 0;
+    this.#eventAmount = 0;
   }
 
   canPresentChampagne(menus) {
     if (menus.previousPrice() >= 120000) {
-      this.#eventPrice -= MENU_LIST.champagne.price;
+      this.#eventAmount -= MENU_LIST.champagne.price;
 
       return true;
     }
@@ -21,7 +21,7 @@ export default class Event {
   christmasDiscount(date) {
     if (date.get() <= 25) {
       const amount = -1000 - 100 * (date.get() - 1);
-      this.#eventPrice += amount;
+      this.#eventAmount += amount;
 
       return amount;
     }
@@ -31,14 +31,14 @@ export default class Event {
 
   weekdayDiscount(menus) {
     const amount = -2023 * menus.types().dessert;
-    this.#eventPrice += amount;
+    this.#eventAmount += amount;
 
     return amount;
   }
 
   weekendDiscount(menus) {
     const amount = -2023 * menus.types().main;
-    this.#eventPrice += amount;
+    this.#eventAmount += amount;
 
     return amount;
   }
@@ -46,11 +46,15 @@ export default class Event {
   specialDiscount(date) {
     if (date.hasStar()) {
       const amount = -1000;
-      this.#eventPrice += amount;
+      this.#eventAmount += amount;
       return amount;
     }
 
     return 0;
+  }
+
+  totalEventAmout() {
+    return this.#eventAmount;
   }
 
   printEvents(date, menus) {
