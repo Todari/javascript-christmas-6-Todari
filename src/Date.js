@@ -1,17 +1,17 @@
 import REGEXP from './constant/RegExp.js';
-import { SelectedDateTypeError } from './error/CustomError.js';
+import { DateTypeError } from './error/CustomError.js';
 
-export default class SelectedDate {
+export default class Date {
   #date;
 
   constructor(date) {
-    this.#validateSelectedDateType(date);
+    this.#validateDateType(date);
     this.#date = Number(date);
   }
 
-  #validateSelectedDateType(date) {
+  #validateDateType(date) {
     if (!REGEXP.date.test(date) || Number(date) < 1 || Number(date) > 31) {
-      throw new SelectedDateTypeError(date);
+      throw new DateTypeError(date);
     }
   }
 

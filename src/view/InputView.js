@@ -11,7 +11,6 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGES.readMenus);
     return input;
   },
-  // ...
 };
 
 export default InputView;

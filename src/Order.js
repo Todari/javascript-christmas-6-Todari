@@ -1,58 +1,66 @@
 import OutputView from './view/OutputView.js';
-import Event from './Event.js';
+import Events from './Events.js';
 
 export default class Order {
   #date;
   #menus;
-  #event;
+  #events;
 
   constructor(date, menus) {
     this.#date = date;
     this.#menus = menus;
-    this.#event = new Event();
-    this.printResultTitle();
-    this.printMenus();
-    this.printPreviousPrice();
-    this.printPresent(this.#menus);
-    this.printEvents(this.#event, this.#date, this.#menus);
-    this.printEventAmounts();
-    this.printTotalPrice();
-    this.printBadge();
+    this.#events = new Events(date, menus);
+    this.print();
   }
 
-  printResultTitle() {
-    OutputView.printResultTitle(this.#date.get());
+  print() {
+    this.#printResult();
+    this.#printMenus();
+    this.#printPreviousPrice();
+    this.#printPresent();
+    this.#printEvents();
+    this.#printEventAmount();
+    this.#printTotalPrice();
+    this.#printEventBadge();
   }
 
-  printMenus() {
-    OutputView.printMenu(this.#menus.list());
+  #printResult() {
+    const date = this.#date.get();
+    OutputView.printResultTitle(date);
   }
 
-  printPreviousPrice() {
-    OutputView.printPreviousPrice(this.#menus.previousPrice());
+  #printMenus() {
+    const menus = this.#menus.list();
+    OutputView.printMenus(menus);
   }
 
-  printPresent() {
-    const canPresent = this.#event.canPresentChampagne(this.#menus);
-    OutputView.printPresent(canPresent);
+  #printPreviousPrice() {
+    const price = this.#menus.previousPrice();
+    OutputView.printPreviousPrice(price);
   }
 
-  printEvents() {
-    OutputView.printEvents();
-    this.#event.printEvents(this.#date, this.#menus);
+  #printPresent() {
+    const present = this.#events.present();
+    OutputView.printPresent(present);
   }
 
-  printEventAmounts() {
-    OutputView.printEventAmounts(this.#event.totalEventAmout(this.#menus));
+  #printEvents() {
+    const events = this.#events.appliedEvents();
+    OutputView.printEvents(events);
   }
 
-  printTotalPrice() {
-    OutputView.printTotalPrice(
-      this.#menus.previousPrice() + this.#event.totalEventDiscount(),
-    );
+  #printEventAmount() {
+    const amount = this.#events.totalEventAmount();
+    OutputView.printEventAmount(amount);
   }
 
-  printBadge() {
-    OutputView.printBadge(this.#event.totalEventAmout(this.#menus));
+  #printTotalPrice() {
+    const price = this.#events.totalPrice();
+    OutputView.printTotalPrice(price);
+  }
+
+  #printEventBadge() {
+    const badge = this.#events.eventBadge();
+    OutputView.printEventBadge(badge);
   }
 }

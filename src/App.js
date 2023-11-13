@@ -1,14 +1,14 @@
-import OrderController from './OrderController.js';
+import GetOrder from './GetOrder.js';
 
 class App {
-  #orderController;
+  #getOrder;
 
   constructor() {
-    this.#orderController = new OrderController();
+    this.#getOrder = new GetOrder();
   }
 
   async run() {
-    await this.#orderController.startOrder();
+    await this.#getOrder.startOrder();
   }
 }
 

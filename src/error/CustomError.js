@@ -1,6 +1,6 @@
 import ERRORS from '../constant/Errors.js';
 
-export class SelectedDateTypeError extends Error {
+export class DateTypeError extends Error {
   constructor() {
     super(ERRORS.dateType);
   }

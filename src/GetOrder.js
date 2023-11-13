@@ -1,25 +1,41 @@
 import Menus from './Menus.js';
-import REGEXP from './constant/RegExp.js';
-import { MenuTypeError } from './error/CustomError.js';
-import InputView from './view/InputView.js';
+import Date from './Date.js';
+import Order from './Order.js';
 import OutputView from './view/OutputView.js';
+import InputView from './view/InputView.js';
+import { MenuDuplicatedError, MenuTypeError } from './error/CustomError.js';
+import REGEXP from './constant/RegExp.js';
 
-export default class OrderMenus {
-  #menus;
+export default class GetOrder {
+  #order;
 
-  async readMenus() {
+  async startOrder() {
+    const date = await this.#readDate();
+    const menus = await this.#readMenus();
+    this.#order = new Order(date, menus);
+  }
+
+  async #readDate() {
     while (true) {
-      const menus = await InputView.readMenus();
+      const date = await InputView.readDate();
       try {
-        this.#validateInputType(menus);
-        this.#menus = this.#stringToMenus(menus);
-        break;
+        return new Date(date);
       } catch (error) {
         OutputView.printErrorMessage(error);
       }
     }
+  }
 
-    return this.#menus;
+  async #readMenus() {
+    while (true) {
+      const menus = await InputView.readMenus();
+      try {
+        this.#validateInputType(menus);
+        return this.#stringToMenus(menus);
+      } catch (error) {
+        OutputView.printErrorMessage(error);
+      }
+    }
   }
 
   #validateInputType(string) {
@@ -30,7 +46,7 @@ export default class OrderMenus {
 
   #validateMenuDuplicated(inputLength, resultLength) {
     if (inputLength !== resultLength) {
-      throw new MenuTypeError();
+      throw new MenuDuplicatedError();
     }
   }
 
@@ -39,7 +55,6 @@ export default class OrderMenus {
     string.split(',').forEach(menuInfo => {
       const menu = menuInfo.split('-')[0];
       const amount = menuInfo.split('-')[1];
-
       menus[`${menu}`] = Number(amount);
     });
 
@@ -47,6 +62,7 @@ export default class OrderMenus {
       string.split(',').length,
       Object.keys(menus).length,
     );
+
     return new Menus(menus);
   }
 }

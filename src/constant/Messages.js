@@ -10,29 +10,32 @@ const MESSAGES = Object.freeze({
     suffix: '일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!',
   },
 
-  printMenus: '\n<주문 메뉴>',
-  printPreviousPrice: '\n<할인 전 총주문 금액>',
-  printPresents: '\n<증정 메뉴>',
-  presentChampagne: '샴페인 1개',
+  menusTitle: '\n<주문 메뉴>',
+  previousPriceTitle: '\n<할인 전 총주문 금액>',
+  presentTitle: '\n<증정 메뉴>',
+  present: '샴페인 1개',
 
   printNoEvent: '없음',
 
-  printEvents: '\n<혜택 내역>',
-  christmasDiscount: '크리스마스 디데이 할인: ',
-  weekdayDiscount: '평일 할인: ',
-  weekendDiscount: '주말 할인: ',
-  specialDiscount: '특별 할인: ',
-  presentDiscount: '증정 이벤트: ',
+  eventsTitle: '\n<혜택 내역>',
 
-  printEventAmounts: '\n<총혜택 금액>',
-  printTotalPrice: '\n<할인 후 예상 결제 금액>',
-  printEventBadge: '\n<12월 이벤트 뱃지>',
+  christmasDiscount: '크리스마스 디데이 할인',
+  weekdayDiscount: '평일 할인',
+  weekendDiscount: '주말 할인',
+  specialDiscount: '특별 할인',
+  presentDiscount: '증정 이벤트',
+
+  eventAmountTitle: '\n<총혜택 금액>',
+  totalPriceTitle: '\n<할인 후 예상 결제 금액>',
+  eventBadgeTitle: '\n<12월 이벤트 배지>',
 
   badge: {
     star: '별',
     tree: '트리',
     santa: '산타',
   },
+
+  krWon: '원',
 });
 
 export default MESSAGES;

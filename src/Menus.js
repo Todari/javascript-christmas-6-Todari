@@ -14,7 +14,7 @@ export default class Menus {
     });
 
     this.#validateAmounts();
-    // this.#validateOnlyBeverage();
+    this.#validateOnlyBeverage();
   }
 
   #validateAmounts() {
@@ -29,7 +29,7 @@ export default class Menus {
   }
 
   #validateOnlyBeverage() {
-    if (this.types().main + this.types().baverage === 0) {
+    if (this.types().main + this.types().beverage === 0) {
       throw new MenuOnlyBeverageError();
     }
   }
@@ -61,7 +61,7 @@ export default class Menus {
   }
 
   types() {
-    const types = { main: 0, baverage: 0, dessert: 0 };
+    const types = { main: 0, beverage: 0, dessert: 0 };
     this.#menus.forEach((value, key) => {
       types[key.get().type] += value;
     });
