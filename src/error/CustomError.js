@@ -6,9 +6,9 @@ export class DateTypeError extends Error {
   }
 }
 
-export class MenuTypeError extends Error {
+export class MenuOrderTypeError extends Error {
   constructor() {
-    super(ERRORS.menuType);
+    super(ERRORS.menuOrderType);
   }
 }
 
@@ -33,5 +33,22 @@ export class MenuAmountError extends Error {
 export class MenuOnlyBeverageError extends Error {
   constructor() {
     super(ERRORS.menuOnlyBeverage);
+  }
+}
+
+export class MenuNameError extends Error {
+  constructor() {
+    super(ERRORS.menuNameError);
+  }
+}
+
+export class MenuTypeError extends Error {
+  constructor() {
+    super(ERRORS.menuTypeError);
+  }
+}
+export class MenuPriceError extends Error {
+  constructor() {
+    super(ERRORS.menuPriceError);
   }
 }
