@@ -13,8 +13,11 @@ const MESSAGES = Object.freeze({
   menusTitle: '\n<주문 메뉴>',
   previousPriceTitle: '\n<할인 전 총주문 금액>',
   presentTitle: '\n<증정 메뉴>',
-  present: '샴페인 1개',
+  eventAmountTitle: '\n<총혜택 금액>',
+  totalPriceTitle: '\n<할인 후 예상 결제 금액>',
+  eventBadgeTitle: '\n<12월 이벤트 배지>',
 
+  present: '샴페인 1개',
   printNoEvent: '없음',
 
   eventsTitle: '\n<혜택 내역>',
@@ -24,10 +27,6 @@ const MESSAGES = Object.freeze({
   weekendDiscount: '주말 할인',
   specialDiscount: '특별 할인',
   presentDiscount: '증정 이벤트',
-
-  eventAmountTitle: '\n<총혜택 금액>',
-  totalPriceTitle: '\n<할인 후 예상 결제 금액>',
-  eventBadgeTitle: '\n<12월 이벤트 배지>',
 
   badge: {
     star: '별',
