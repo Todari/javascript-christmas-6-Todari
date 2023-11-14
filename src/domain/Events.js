@@ -7,12 +7,10 @@ export default class Events {
   #date;
   #menus;
   #events;
-  #eventPrice;
 
   constructor(date, menus) {
     this.#date = date;
     this.#menus = menus;
-    this.#eventPrice = 0;
     this.#events = {
       christmasDiscount: new Event(MESSAGES.christmasDiscount, false, 0),
       weekdayDiscount: new Event(MESSAGES.weekdayDiscount, false, 0),
@@ -119,8 +117,7 @@ export default class Events {
   appliedEvents() {
     const result = [];
     if (!this.#menus.canApplyEvent()) {
-      result.push(MESSAGES.printNoEvent);
-      return result;
+      return [MESSAGES.printNoEvent];
     }
     Object.keys(this.#events).forEach(key => {
       if (

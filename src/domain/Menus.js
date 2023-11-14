@@ -6,15 +6,13 @@ import {
 import SETTING from '../constant/Setting.js';
 
 export default class Menus {
-  #menuRepository;
   #menus;
 
   constructor(menus) {
-    this.#menuRepository = new MenuRepository();
     this.#menus = new Map();
 
     Object.keys(menus).forEach(key => {
-      this.#menus.set(this.#menuRepository.getMenuByName(key), menus[key]);
+      this.#menus.set(MenuRepository.getMenuByName(key), menus[key]);
     });
 
     this.#validateAmounts();
@@ -33,7 +31,7 @@ export default class Menus {
   }
 
   #validateOnlyBeverage() {
-    if (this.types().main + this.types().dessert === 0) {
+    if (this.#onlyBeverage()) {
       throw new MenuOnlyBeverageError();
     }
   }
@@ -59,6 +57,20 @@ export default class Menus {
 
   canApplyEvent() {
     if (this.previousPrice() > SETTING.minimumApplyEventPrice) {
+      return true;
+    }
+    return false;
+  }
+
+  #onlyBeverage() {
+    let notBeverage = 0;
+    this.#menus.forEach((value, key) => {
+      if (key.get().type !== 'beverage') {
+        notBeverage += value;
+      }
+    });
+
+    if (notBeverage === 0) {
       return true;
     }
     return false;

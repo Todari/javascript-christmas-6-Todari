@@ -3,16 +3,12 @@ import { MenuNotExistError } from '../error/CustomError.js';
 import Menu from '../model/Menu.js';
 
 export default class MenuRepository {
-  #menus;
+  static #menus = this.#initMenuRepository();
 
-  constructor() {
-    this.#menus = [];
-    this.#initMenuRepository();
-  }
-
-  #initMenuRepository() {
+  static #initMenuRepository() {
+    const result = [];
     Object.keys(MENU_LIST).forEach(key => {
-      this.#menus.push(
+      result.push(
         new Menu(
           MENU_LIST[key].name,
           MENU_LIST[key].type,
@@ -20,13 +16,18 @@ export default class MenuRepository {
         ),
       );
     });
+    return result;
   }
 
-  getMenuByName(name) {
+  static getMenuByName(name) {
     const result = this.#menus.find(menu => menu.get().name === name);
     if (result === undefined) {
       throw new MenuNotExistError();
     }
     return result;
+  }
+
+  static getMenus() {
+    return this.#menus;
   }
 }
