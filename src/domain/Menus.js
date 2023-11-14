@@ -77,7 +77,7 @@ export default class Menus {
   }
 
   types() {
-    const types = { main: 0, beverage: 0, dessert: 0 };
+    const types = { appetizer: 0, main: 0, beverage: 0, dessert: 0 };
     this.#menus.forEach((value, key) => {
       types[key.get().type] += value;
     });
