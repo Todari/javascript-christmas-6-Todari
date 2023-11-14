@@ -11,6 +11,8 @@ const ERRORS = Object.freeze({
   menuOnlyBeverage: `${PREFIX} 음료만 주문할 수 없습니다. 다시 입력해 주세요.`,
 
   menuNameError: `${PREFIX} 생성된 메뉴의 이름이 String이 아닙니다.`,
+  menuTypeError: `${PREFIX} 생성된 메뉴의 타입이 String이 아닙니다.`,
+  menuPriceError: `${PREFIX} 생성된 메뉴의 가격이 Number이 아닙니다.`,
 });
 
 export default ERRORS;
