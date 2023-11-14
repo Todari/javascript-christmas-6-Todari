@@ -46,7 +46,7 @@ export default class Events {
   }
 
   #setWeekendDiscount() {
-    const amount = SETTING.weekDiscount * this.#menus.types().dessert;
+    const amount = SETTING.weekDiscount * this.#menus.types().main;
     if (this.#date.isWeekend() && amount !== 0) {
       EventRepository.getEventByType(MESSAGES.weekendDiscount).setStatus(true);
     }
