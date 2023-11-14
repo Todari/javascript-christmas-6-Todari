@@ -77,4 +77,26 @@ describe('GetOrder domain 단위테스트', () => {
       );
     },
   );
+
+  test.each([
+    [
+      '티본스테이크-1,바비큐립-1,티본스테이크-1',
+      '티본스테이크-1,티본스테이크-1,초코케이크-1',
+      '티본스테이크-1,초코케이크-1,초코케이크-2',
+      '티본스테이크-1,초코케이크-1,제로콜라-1,티본스테이크-1',
+      '티본스테이크-1,초코케이크-2,제로콜라-1,제로콜라-1',
+    ],
+  ])(
+    `GetOrder/startOrder 에서 Menu가 중복되지 않아야 한다. 그렇지 않으면 MenuDuplicatedError를 반환해야 한다.`,
+    async input => {
+      const logSpy = getLogSpy();
+      mockQuestions([CORRECT_DATE, input, CORRECT_MENUS]);
+
+      await new GetOrder().startOrder();
+
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining(ERROR.menuDuplicated),
+      );
+    },
+  );
 });
