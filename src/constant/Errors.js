@@ -13,6 +13,10 @@ const ERRORS = Object.freeze({
   menuNameError: `${PREFIX} 생성된 메뉴의 이름이 String이 아닙니다.`,
   menuTypeError: `${PREFIX} 생성된 메뉴의 타입이 String이 아닙니다.`,
   menuPriceError: `${PREFIX} 생성된 메뉴의 가격이 Number이 아닙니다.`,
+
+  eventTypeError: `${PREFIX} 생성된 이벤트의 타입이 String이 아닙니다.`,
+  eventStatusError: `${PREFIX} 생성된 이벤트의 상태가 Boolean이 아닙니다.`,
+  eventPriceError: `${PREFIX} 생성된 이벤트의 가격이 Number이 아닙니다.`,
 });
 
 export default ERRORS;

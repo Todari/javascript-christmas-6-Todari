@@ -52,3 +52,19 @@ export class MenuPriceError extends Error {
     super(ERRORS.menuPriceError);
   }
 }
+
+export class EventTypeError extends Error {
+  constructor() {
+    super(ERRORS.eventTypeError);
+  }
+}
+export class EventStatusError extends Error {
+  constructor() {
+    super(ERRORS.eventStatusError);
+  }
+}
+export class EventAmountError extends Error {
+  constructor() {
+    super(ERRORS.eventAmountError);
+  }
+}

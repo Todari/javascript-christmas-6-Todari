@@ -1,5 +1,10 @@
 import MESSAGES from '../constant/Messages.js';
 import SETTING from '../constant/Setting.js';
+import {
+  EventTypeError,
+  EventStatusError,
+  EventAmountError,
+} from '../error/CustomError.js';
 
 export default class Event {
   #type;
@@ -7,9 +12,30 @@ export default class Event {
   #amount;
 
   constructor(type, status, amount) {
+    this.#validateEventType();
+    this.#validateEventStatus();
+    this.#validateEventAmount();
     this.#type = type;
     this.#status = status;
     this.#amount = amount;
+  }
+
+  #validateEventType(type) {
+    if (typeof type !== 'string') {
+      throw new EventTypeError();
+    }
+  }
+
+  #validateEventStatus(status) {
+    if (typeof status !== 'boolean') {
+      throw new EventStatusError();
+    }
+  }
+
+  #validateEventAmount(amount) {
+    if (typeof amount !== 'number') {
+      throw new EventAmountError();
+    }
   }
 
   setAmount(amount) {
@@ -29,8 +55,7 @@ export default class Event {
   }
 
   print() {
-    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${
-      MESSAGES.krWon
-    }`;
+    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon
+      }`;
   }
 }
