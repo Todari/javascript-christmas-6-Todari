@@ -12,9 +12,9 @@ export default class Event {
   #amount;
 
   constructor(type, status, amount) {
-    this.#validateEventType();
-    this.#validateEventStatus();
-    this.#validateEventAmount();
+    this.#validateEventType(type);
+    this.#validateEventStatus(status);
+    this.#validateEventAmount(amount);
     this.#type = type;
     this.#status = status;
     this.#amount = amount;
