@@ -33,7 +33,7 @@ export default class Menus {
   }
 
   #validateOnlyBeverage() {
-    if (this.types().main + this.types().beverage === 0) {
+    if (this.types().main + this.types().dessert === 0) {
       throw new MenuOnlyBeverageError();
     }
   }
