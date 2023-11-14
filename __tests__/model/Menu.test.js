@@ -41,7 +41,9 @@ describe('Menu model 단위테스트', () => {
   ])(
     'Menu의 name type이 string이 아닐 경우 MenuNameError을 반환한다.',
     input => {
-      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(MenuNameError);
+      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(
+        MenuNameError,
+      );
     },
   );
 
@@ -56,7 +58,9 @@ describe('Menu model 단위테스트', () => {
   ])(
     'Menu의 type type이 string이 아닐 경우 MenuTypeError을 반환한다.',
     input => {
-      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(MenuTypeError);
+      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(
+        MenuTypeError,
+      );
     },
   );
 
@@ -75,7 +79,9 @@ describe('Menu model 단위테스트', () => {
   ])(
     'Menu의 price type이 number 아닐 경우 MenuPriceError을 반환한다.',
     input => {
-      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(MenuPriceError);
+      expect(() => new Menu(input[0], input[1], input[2])).toThrowError(
+        MenuPriceError,
+      );
     },
   );
 });
