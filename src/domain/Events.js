@@ -34,31 +34,29 @@ export default class Events {
   }
 
   #setChristmasDiscount() {
-    if (this.#date.get() <= 25) {
+    const amount =
+      SETTING.christmasDiscount.default
+      + SETTING.christmasDiscount.forDay * (this.#date.get() - 1)
+    if (this.#date.get() <= SETTING.date.christmas && amount !== 0) {
       this.#events.christmasDiscount.setStatus(true);
     }
-    this.#events.christmasDiscount.setAmount(
-      SETTING.christmasDiscount.default
-      + SETTING.christmasDiscount.forDay * (this.#date.get() - 1),
-    );
+    this.#events.christmasDiscount.setAmount(amount);
   }
 
   #setWeekdayDiscount() {
-    if (!this.#date.isWeekend()) {
+    const amount = SETTING.weekDiscount * this.#menus.types().dessert;
+    if (!this.#date.isWeekend() && amount !== 0) {
       this.#events.weekdayDiscount.setStatus(true);
     }
-    this.#events.weekdayDiscount.setAmount(
-      SETTING.weekDiscount * this.#menus.types().dessert,
-    );
+    this.#events.weekdayDiscount.setAmount(amount);
   }
 
   #setWeekendDiscount() {
-    if (this.#date.isWeekend()) {
+    const amount = SETTING.weekDiscount * this.#menus.types().dessert;
+    if (this.#date.isWeekend() && amount !== 0) {
       this.#events.weekendDiscount.setStatus(true);
     }
-    this.#events.weekendDiscount.setAmount(
-      SETTING.weekDiscount * this.#menus.types().main,
-    );
+    this.#events.weekendDiscount.setAmount(amount);
   }
 
   #setSpecialDiscount() {
@@ -122,15 +120,16 @@ export default class Events {
     const result = [];
     if (!this.#menus.canApplyEvent()) {
       result.push(MESSAGES.printNoEvent);
-
       return result;
     }
     Object.keys(this.#events).forEach(key => {
-      if (this.#events[key].getStatus()) {
+      if (
+        this.#events[key].getStatus() &&
+        this.#events[key].getAmount() !== 0
+      ) {
         result.push(this.#events[key].print());
       }
     });
-
     return result;
   }
 }
