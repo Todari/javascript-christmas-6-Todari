@@ -1,6 +1,6 @@
 const PREFIX = '[ERROR]';
 
-const ERRORS = Object.freeze({
+const ERROR = Object.freeze({
   dateType: `${PREFIX} 유효하지 않은 날짜입니다. 다시 입력해 주세요.`,
 
   menuOrderType: `${PREFIX} 유효하지 않은 주문입니다. 다시 입력해 주세요.`,
@@ -17,8 +17,8 @@ const ERRORS = Object.freeze({
   eventType: `${PREFIX} 생성된 이벤트의 타입이 String이 아닙니다.`,
   eventStatus: `${PREFIX} 생성된 이벤트의 상태가 Boolean이 아닙니다.`,
   eventPrice: `${PREFIX} 생성된 이벤트의 가격이 Number이 아닙니다.`,
-  
+
   eventNotExist: `${PREFIX} 존재하지 않는 이벤트 입니다.`,
 });
 
-export default ERRORS;
+export default ERROR;

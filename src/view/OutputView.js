@@ -1,10 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import MESSAGES from '../constant/Messages.js';
-import SETTING from '../constant/Setting.js';
+import { MESSAGE, SETTING } from '../constant/index.js';
 
 const OutputView = {
   printStartOrder() {
-    Console.print(MESSAGES.startOrder);
+    Console.print(MESSAGE.startOrder);
   },
 
   printErrorMessage(error) {
@@ -13,46 +12,46 @@ const OutputView = {
 
   printResultTitle(date) {
     Console.print(
-      `${MESSAGES.resultTitle.preffix}${date}${MESSAGES.resultTitle.suffix}`,
+      `${MESSAGE.resultTitle.preffix}${date}${MESSAGE.resultTitle.suffix}`,
     );
   },
 
   printPreviousPrice(price) {
-    Console.print(MESSAGES.previousPriceTitle);
-    Console.print(`${price.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
+    Console.print(MESSAGE.previousPriceTitle);
+    Console.print(`${price.toLocaleString(SETTING.locale)}${MESSAGE.krWon}`);
   },
 
   printPresent(present) {
-    Console.print(MESSAGES.presentTitle);
+    Console.print(MESSAGE.presentTitle);
     Console.print(present);
   },
 
   printMenus(menus) {
-    Console.print(MESSAGES.menusTitle);
+    Console.print(MESSAGE.menusTitle);
     menus.forEach(menu => {
       Console.print(menu);
     });
   },
 
   printEvents(events) {
-    Console.print(MESSAGES.eventsTitle);
+    Console.print(MESSAGE.eventsTitle);
     events.forEach(event => {
       Console.print(event);
     });
   },
 
   printEventAmount(amount) {
-    Console.print(MESSAGES.eventAmountTitle);
-    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
+    Console.print(MESSAGE.eventAmountTitle);
+    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGE.krWon}`);
   },
 
   printTotalPrice(amount) {
-    Console.print(MESSAGES.totalPriceTitle);
-    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon}`);
+    Console.print(MESSAGE.totalPriceTitle);
+    Console.print(`${amount.toLocaleString(SETTING.locale)}${MESSAGE.krWon}`);
   },
 
   printEventBadge(badge) {
-    Console.print(MESSAGES.eventBadgeTitle);
+    Console.print(MESSAGE.eventBadgeTitle);
     Console.print(badge);
   },
 };

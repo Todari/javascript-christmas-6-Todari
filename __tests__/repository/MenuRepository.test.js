@@ -1,4 +1,4 @@
-import MenuRepository from '../../src/repository/MenuRepository.js';
+import { MenuRepository } from '../../src/repository/index.js';
 import { MenuNotExistError } from '../../src/error/CustomError.js';
 
 describe('MenuRepository 단위테스트', () => {

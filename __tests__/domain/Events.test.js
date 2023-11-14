@@ -1,6 +1,5 @@
-import Date from '../../src/model/Date.js';
-import Menus from '../../src/domain/Menus.js';
-import Events from '../../src/domain/Events.js';
+import { Date } from '../../src/model/index.js';
+import { Menus, Events } from '../../src/domain/index.js';
 
 describe('Event domain 단위테스트', () => {
   const date = new Date('3');

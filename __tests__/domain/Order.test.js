@@ -1,8 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { EOL as LINE_SEPARATOR } from 'os';
-import Menus from '../../src/domain/Menus.js';
-import Order from '../../src/domain/Order.js';
-import Date from '../../src/model/Date.js';
+import { Date } from '../../src/model/index.js';
+import { Menus, Order } from '../../src/domain/index.js';
 
 const getLogSpy = () => {
   const logSpy = jest.spyOn(MissionUtils.Console, 'print');

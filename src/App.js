@@ -1,4 +1,4 @@
-import GetOrder from './domain/GetOrder.js';
+import { GetOrder } from './domain/index.js';
 
 class App {
   async run() {

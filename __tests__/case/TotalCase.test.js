@@ -1,8 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { EOL as LINE_SEPARATOR } from 'os';
 import App from '../../src/App.js';
-import SETTING from '../../src/constant/Setting.js';
-import EventRepository from '../../src/repository/EventRepository.js';
+import { SETTING } from '../../src/constant/index.js';
+import { EventRepository } from '../../src/repository/index.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();

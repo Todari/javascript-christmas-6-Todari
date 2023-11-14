@@ -1,6 +1,6 @@
-import MENU_LIST from '../constant/MenuList.js';
+import { MENU_LIST } from '../constant/index.js';
+import { Menu } from '../model/index.js';
 import { MenuNotExistError } from '../error/CustomError.js';
-import Menu from '../model/Menu.js';
 
 export default class MenuRepository {
   static #menus = this.#initMenuRepository();
@@ -25,9 +25,5 @@ export default class MenuRepository {
       throw new MenuNotExistError();
     }
     return result;
-  }
-
-  static getMenus() {
-    return this.#menus;
   }
 }

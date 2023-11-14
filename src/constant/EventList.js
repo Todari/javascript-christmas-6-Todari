@@ -1,21 +1,21 @@
-import MESSAGES from './Messages.js';
+import MESSAGE from './Message.js';
 
 const EVENT_LIST = Object.freeze({
   christmasDiscount: {
-    type: MESSAGES.christmasDiscount,
+    type: MESSAGE.christmasDiscount,
     status: false,
     amount: 0,
   },
 
   weekdayDiscount: {
-    type: MESSAGES.weekdayDiscount,
+    type: MESSAGE.weekdayDiscount,
     status: false,
     amount: 0,
   },
-  weekendDiscount: { type: MESSAGES.weekendDiscount, status: false, amount: 0 },
-  specialDiscount: { type: MESSAGES.specialDiscount, status: false, amount: 0 },
+  weekendDiscount: { type: MESSAGE.weekendDiscount, status: false, amount: 0 },
+  specialDiscount: { type: MESSAGE.specialDiscount, status: false, amount: 0 },
   presentChampagne: {
-    type: MESSAGES.presentDiscount,
+    type: MESSAGE.presentDiscount,
     status: false,
     amount: 0,
   },

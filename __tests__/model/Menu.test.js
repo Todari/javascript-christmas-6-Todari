@@ -1,10 +1,10 @@
-import MENU_LIST from '../../src/constant/MenuList.js';
+import { MENU_LIST } from '../../src/constant/index.js';
+import { Menu } from '../../src/model/index.js';
 import {
   MenuNameError,
   MenuTypeError,
   MenuPriceError,
 } from '../../src/error/CustomError.js';
-import Menu from '../../src/model/Menu.js';
 
 describe('Menu model 단위테스트', () => {
   Object.keys(MENU_LIST).forEach(key => {

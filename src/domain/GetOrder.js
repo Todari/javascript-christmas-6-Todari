@@ -1,10 +1,8 @@
 import Menus from './Menus.js';
-import Date from '../model/Date.js';
 import Order from './Order.js';
-import OutputView from '../view/OutputView.js';
-import InputView from '../view/InputView.js';
-import REGEXP from '../constant/RegExp.js';
-import SETTING from '../constant/Setting.js';
+import { REGEXP, SETTING } from '../constant/index.js';
+import { Date } from '../model/index.js';
+import { OutputView, InputView } from '../view/index.js';
 import {
   MenuDuplicatedError,
   MenuOrderTypeError,

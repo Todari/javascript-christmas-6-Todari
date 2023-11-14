@@ -1,8 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import GetOrder from '../../src/domain/GetOrder.js';
-import SETTING from '../../src/constant/Setting.js';
-import REGEXP from '../../src/constant/RegExp.js';
-import ERRORS from '../../src/constant/Errors.js';
+import { SETTING, REGEXP, ERROR } from '../../src/constant/index.js';
+import { GetOrder } from '../../src/domain/index.js';
 
 const mockQuestions = inputs => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -39,7 +37,7 @@ describe('GetOrder domain 단위테스트', () => {
       await new GetOrder().startOrder();
 
       expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining(ERRORS.dateType),
+        expect.stringContaining(ERROR.dateType),
       );
     },
   );
@@ -53,7 +51,7 @@ describe('GetOrder domain 단위테스트', () => {
       await new GetOrder().startOrder();
 
       expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining(ERRORS.dateType),
+        expect.stringContaining(ERROR.dateType),
       );
     },
   );
@@ -75,7 +73,7 @@ describe('GetOrder domain 단위테스트', () => {
       await new GetOrder().startOrder();
 
       expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining(ERRORS.menuOrderType),
+        expect.stringContaining(ERROR.menuOrderType),
       );
     },
   );

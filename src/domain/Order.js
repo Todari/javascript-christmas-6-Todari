@@ -1,5 +1,5 @@
-import OutputView from '../view/OutputView.js';
 import Events from './Events.js';
+import { OutputView } from '../view/index.js';
 
 export default class Order {
   #date;

@@ -1,5 +1,4 @@
-import MESSAGES from '../constant/Messages.js';
-import SETTING from '../constant/Setting.js';
+import { MESSAGE, SETTING } from '../constant/index.js';
 import {
   EventTypeError,
   EventStatusError,
@@ -51,8 +50,7 @@ export default class Event {
   }
 
   print() {
-    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${
-      MESSAGES.krWon
-    }`;
+    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${MESSAGE.krWon
+      }`;
   }
 }

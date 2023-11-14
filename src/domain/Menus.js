@@ -1,9 +1,9 @@
-import MenuRepository from '../repository/MenuRepository.js';
+import { SETTING } from '../constant/index.js';
+import { MenuRepository } from '../repository/index.js';
 import {
   MenuAmountError,
   MenuOnlyBeverageError,
 } from '../error/CustomError.js';
-import SETTING from '../constant/Setting.js';
 
 export default class Menus {
   #menus;

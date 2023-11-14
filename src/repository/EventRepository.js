@@ -1,5 +1,5 @@
-import Event from '../model/Event.js';
-import EVENT_LIST from '../constant/EventList.js';
+import { EVENT_LIST } from '../constant/index.js';
+import { Event } from '../model/index.js';
 import { EventNotExistError } from '../error/CustomError.js';
 
 export default class EventRepository {

@@ -1,4 +1,5 @@
-import Date from '../../src/model/Date.js';
+import { SETTING } from '../../src/constant/index.js';
+import { Date } from '../../src/model/index.js';
 import { DateTypeError } from '../../src/error/CustomError.js';
 
 describe('Date model 단위테스트', () => {
@@ -15,7 +16,7 @@ describe('Date model 단위테스트', () => {
   );
 
   test.each([['0', '32', '33', '34', '35']])(
-    'date는 1이상 31이하여야 한다. 그렇지 않으면 DateTypeError을 반환해야 한다.',
+    `date는 ${SETTING.date.minimun}이상 ${SETTING.date.maximum}이하여야 한다. 그렇지 않으면 DateTypeError을 반환해야 한다.`,
     input => {
       expect(() => new Date(input)).toThrowError(DateTypeError);
     },

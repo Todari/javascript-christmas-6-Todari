@@ -1,5 +1,5 @@
-import SETTING from '../../src/constant/Setting.js';
-import Menus from '../../src/domain/Menus.js';
+import { SETTING } from '../../src/constant/index.js';
+import { Menus } from '../../src/domain/index.js';
 import {
   MenuAmountError,
   MenuNotExistError,

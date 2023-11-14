@@ -1,7 +1,5 @@
-import MESSAGES from '../constant/Messages.js';
-import SETTING from '../constant/Setting.js';
-import MenuRepository from '../repository/MenuRepository.js';
-import EventRepository from '../repository/EventRepository.js';
+import { MESSAGE, SETTING } from '../constant/index.js';
+import { MenuRepository, EventRepository } from '../repository/index.js';
 
 export default class Events {
   #date;
@@ -28,11 +26,11 @@ export default class Events {
       SETTING.christmasDiscount.default
       + SETTING.christmasDiscount.forDay * (this.#date.get() - 1)
     if (this.#date.get() <= SETTING.date.christmas && amount !== 0) {
-      EventRepository.getEventByType(MESSAGES.christmasDiscount).setStatus(
+      EventRepository.getEventByType(MESSAGE.christmasDiscount).setStatus(
         true,
       );
     }
-    EventRepository.getEventByType(MESSAGES.christmasDiscount).setAmount(
+    EventRepository.getEventByType(MESSAGE.christmasDiscount).setAmount(
       amount,
     );
   }
@@ -40,42 +38,42 @@ export default class Events {
   #setWeekdayDiscount() {
     const amount = SETTING.weekDiscount * this.#menus.types().dessert;
     if (!this.#date.isWeekend() && amount !== 0) {
-      EventRepository.getEventByType(MESSAGES.weekdayDiscount).setStatus(true);
+      EventRepository.getEventByType(MESSAGE.weekdayDiscount).setStatus(true);
     }
-    EventRepository.getEventByType(MESSAGES.weekdayDiscount).setAmount(amount);
+    EventRepository.getEventByType(MESSAGE.weekdayDiscount).setAmount(amount);
   }
 
   #setWeekendDiscount() {
     const amount = SETTING.weekDiscount * this.#menus.types().main;
     if (this.#date.isWeekend() && amount !== 0) {
-      EventRepository.getEventByType(MESSAGES.weekendDiscount).setStatus(true);
+      EventRepository.getEventByType(MESSAGE.weekendDiscount).setStatus(true);
     }
-    EventRepository.getEventByType(MESSAGES.weekendDiscount).setAmount(amount);
+    EventRepository.getEventByType(MESSAGE.weekendDiscount).setAmount(amount);
   }
 
   #setSpecialDiscount() {
     if (this.#date.hasStar()) {
-      EventRepository.getEventByType(MESSAGES.specialDiscount).setStatus(true);
+      EventRepository.getEventByType(MESSAGE.specialDiscount).setStatus(true);
     }
-    EventRepository.getEventByType(MESSAGES.specialDiscount).setAmount(
+    EventRepository.getEventByType(MESSAGE.specialDiscount).setAmount(
       SETTING.specialDiscount,
     );
   }
 
   #setPresentChampagne() {
     if (this.#menus.previousPrice() >= SETTING.minimumPresentPrice) {
-      EventRepository.getEventByType(MESSAGES.presentDiscount).setStatus(true);
+      EventRepository.getEventByType(MESSAGE.presentDiscount).setStatus(true);
     }
-    EventRepository.getEventByType(MESSAGES.presentDiscount).setAmount(
+    EventRepository.getEventByType(MESSAGE.presentDiscount).setAmount(
       -MenuRepository.getMenuByName(SETTING.presentMenu).get().price,
     );
   }
 
   present() {
-    if (EventRepository.getEventByType(MESSAGES.presentDiscount).get().status) {
-      return MESSAGES.present;
+    if (EventRepository.getEventByType(MESSAGE.presentDiscount).get().status) {
+      return MESSAGE.present;
     }
-    return MESSAGES.printNoEvent;
+    return MESSAGE.printNoEvent;
   }
 
   totalEventAmount() {
@@ -91,7 +89,7 @@ export default class Events {
 
   totalPrice() {
     let price = this.#menus.previousPrice() + this.totalEventAmount();
-    if (EventRepository.getEventByType(MESSAGES.presentDiscount).get().status) {
+    if (EventRepository.getEventByType(MESSAGE.presentDiscount).get().status) {
       price += MenuRepository.getMenuByName(SETTING.presentMenu).get().price;
     }
 
@@ -102,13 +100,13 @@ export default class Events {
     const amount = this.totalEventAmount();
     switch (true) {
       case amount <= SETTING.minimumAmountBadge.santa:
-        return MESSAGES.badge.santa;
+        return MESSAGE.badge.santa;
       case amount <= SETTING.minimumAmountBadge.tree:
-        return MESSAGES.badge.tree;
+        return MESSAGE.badge.tree;
       case amount <= SETTING.minimumAmountBadge.star:
-        return MESSAGES.badge.star;
+        return MESSAGE.badge.star;
       default:
-        return MESSAGES.printNoEvent;
+        return MESSAGE.printNoEvent;
     }
   }
 
@@ -116,7 +114,7 @@ export default class Events {
     const result = [];
 
     if (!this.#menus.canApplyEvent()) {
-      return [MESSAGES.printNoEvent];
+      return [MESSAGE.printNoEvent];
     }
     EventRepository.get().forEach(event => {
       if (event.get().status && event.get().amount !== 0) {

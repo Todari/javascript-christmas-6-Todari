@@ -1,5 +1,5 @@
+import { EventRepository } from '../../src/repository/index.js';
 import { EventNotExistError } from '../../src/error/CustomError.js';
-import EventRepository from '../../src/repository/EventRepository.js';
 
 describe('EventRepository 단위테스트', () => {
   test.each([

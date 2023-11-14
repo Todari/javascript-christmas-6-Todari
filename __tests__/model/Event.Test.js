@@ -1,5 +1,5 @@
-import Event from '../../src/model/Event.js';
-import EVENT_LIST from '../../src/constant/EventList.js';
+import { EVENT_LIST } from '../../src/constant/index.js';
+import { Event } from '../../src/model/index.js';
 import {
   EventTypeError,
   EventStatusError,
