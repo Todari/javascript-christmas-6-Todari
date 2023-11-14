@@ -1,23 +1,16 @@
 import MENU_LIST from '../constant/MenuList.js';
 import MESSAGES from '../constant/Messages.js';
 import SETTING from '../constant/Setting.js';
-import Event from '../model/Event.js';
+import MenuRepository from '../repository/MenuRepository.js';
+import EventRepository from '../repository/EventRepository.js';
 
 export default class Events {
   #date;
   #menus;
-  #events;
 
   constructor(date, menus) {
     this.#date = date;
     this.#menus = menus;
-    this.#events = {
-      christmasDiscount: new Event(MESSAGES.christmasDiscount, false, 0),
-      weekdayDiscount: new Event(MESSAGES.weekdayDiscount, false, 0),
-      weekendDiscount: new Event(MESSAGES.weekendDiscount, false, 0),
-      specialDiscount: new Event(MESSAGES.specialDiscount, false, 0),
-      presentChampagne: new Event(MESSAGES.presentDiscount, false, 0),
-    };
     if (this.#menus.canApplyEvent()) {
       this.#set();
     }
@@ -36,45 +29,51 @@ export default class Events {
       SETTING.christmasDiscount.default
       + SETTING.christmasDiscount.forDay * (this.#date.get() - 1)
     if (this.#date.get() <= SETTING.date.christmas && amount !== 0) {
-      this.#events.christmasDiscount.setStatus(true);
+      EventRepository.getEventByType(MESSAGES.christmasDiscount).setStatus(
+        true,
+      );
     }
-    this.#events.christmasDiscount.setAmount(amount);
+    EventRepository.getEventByType(MESSAGES.christmasDiscount).setAmount(
+      amount,
+    );
   }
 
   #setWeekdayDiscount() {
     const amount = SETTING.weekDiscount * this.#menus.types().dessert;
     if (!this.#date.isWeekend() && amount !== 0) {
-      this.#events.weekdayDiscount.setStatus(true);
+      EventRepository.getEventByType(MESSAGES.weekdayDiscount).setStatus(true);
     }
-    this.#events.weekdayDiscount.setAmount(amount);
+    EventRepository.getEventByType(MESSAGES.weekdayDiscount).setAmount(amount);
   }
 
   #setWeekendDiscount() {
     const amount = SETTING.weekDiscount * this.#menus.types().dessert;
     if (this.#date.isWeekend() && amount !== 0) {
-      this.#events.weekendDiscount.setStatus(true);
+      EventRepository.getEventByType(MESSAGES.weekendDiscount).setStatus(true);
     }
-    this.#events.weekendDiscount.setAmount(amount);
+    EventRepository.getEventByType(MESSAGES.weekendDiscount).setAmount(amount);
   }
 
   #setSpecialDiscount() {
     if (this.#date.hasStar()) {
-      this.#events.specialDiscount.setStatus(true);
+      EventRepository.getEventByType(MESSAGES.specialDiscount).setStatus(true);
     }
-    this.#events.specialDiscount.setAmount(SETTING.specialDiscount);
+    EventRepository.getEventByType(MESSAGES.specialDiscount).setAmount(
+      SETTING.specialDiscount,
+    );
   }
 
   #setPresentChampagne() {
     if (this.#menus.previousPrice() >= SETTING.minimumPresentPrice) {
-      this.#events.presentChampagne.setStatus(true);
+      EventRepository.getEventByType(MESSAGES.presentDiscount).setStatus(true);
     }
-    this.#events.presentChampagne.setAmount(
-      -MENU_LIST[SETTING.presentMenu].price,
+    EventRepository.getEventByType(MESSAGES.presentDiscount).setAmount(
+      -MenuRepository.getMenuByName(SETTING.presentMenu).get().price,
     );
   }
 
   present() {
-    if (this.#events.presentChampagne.getStatus()) {
+    if (EventRepository.getEventByType(MESSAGES.presentDiscount).getStatus()) {
       return MESSAGES.present;
     }
     return MESSAGES.printNoEvent;
@@ -82,9 +81,9 @@ export default class Events {
 
   totalEventAmount() {
     let eventPrice = 0;
-    Object.keys(this.#events).forEach(key => {
-      if (this.#events[key].getStatus()) {
-        eventPrice += this.#events[key].getAmount();
+    EventRepository.get().forEach(event => {
+      if (event.getStatus()) {
+        eventPrice += event.getAmount();
       }
     });
 
@@ -93,8 +92,8 @@ export default class Events {
 
   totalPrice() {
     let price = this.#menus.previousPrice() + this.totalEventAmount();
-    if (this.#events.presentChampagne.getStatus()) {
-      price += MENU_LIST[SETTING.presentMenu].price;
+    if (EventRepository.getEventByType(MESSAGES.presentDiscount).getStatus()) {
+      price += MenuRepository.getMenuByName(SETTING.presentMenu).get().price;
     }
 
     return price;
@@ -116,17 +115,16 @@ export default class Events {
 
   appliedEvents() {
     const result = [];
+
     if (!this.#menus.canApplyEvent()) {
       return [MESSAGES.printNoEvent];
     }
-    Object.keys(this.#events).forEach(key => {
-      if (
-        this.#events[key].getStatus() &&
-        this.#events[key].getAmount() !== 0
-      ) {
-        result.push(this.#events[key].print());
+    EventRepository.get().forEach(event => {
+      if (event.getStatus() && event.getAmount() !== 0) {
+        result.push(event.print());
       }
     });
+
     return result;
   }
 }

@@ -38,33 +38,39 @@ export class MenuOnlyBeverageError extends Error {
 
 export class MenuNameError extends Error {
   constructor() {
-    super(ERRORS.menuNameError);
+    super(ERRORS.menuName);
   }
 }
 
 export class MenuTypeError extends Error {
   constructor() {
-    super(ERRORS.menuTypeError);
+    super(ERRORS.menuType);
   }
 }
 export class MenuPriceError extends Error {
   constructor() {
-    super(ERRORS.menuPriceError);
+    super(ERRORS.menuPrice);
   }
 }
 
 export class EventTypeError extends Error {
   constructor() {
-    super(ERRORS.eventTypeError);
+    super(ERRORS.eventType);
   }
 }
 export class EventStatusError extends Error {
   constructor() {
-    super(ERRORS.eventStatusError);
+    super(ERRORS.eventStatus);
   }
 }
 export class EventAmountError extends Error {
   constructor() {
-    super(ERRORS.eventAmountError);
+    super(ERRORS.eventAmount);
+  }
+}
+
+export class EventNotExistError extends Error {
+  constructor() {
+    super(ERRORS.eventNotExist);
   }
 }

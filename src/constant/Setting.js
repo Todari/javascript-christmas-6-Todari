@@ -21,7 +21,7 @@ const SETTING = Object.freeze({
   specialDiscount: -1000,
 
   minimumPresentPrice: 120000,
-  presentMenu: 'champagne',
+  presentMenu: '샴페인',
 
   minimumAmountBadge: {
     santa: -20000,

@@ -54,8 +54,13 @@ export default class Event {
     return this.#status;
   }
 
+  getType() {
+    return this.#type;
+  }
+
   print() {
-    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${MESSAGES.krWon
-      }`;
+    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${
+      MESSAGES.krWon
+    }`;
   }
 }
