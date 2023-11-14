@@ -1,4 +1,3 @@
-import MENU_LIST from '../constant/MenuList.js';
 import MESSAGES from '../constant/Messages.js';
 import SETTING from '../constant/Setting.js';
 import MenuRepository from '../repository/MenuRepository.js';
@@ -73,7 +72,7 @@ export default class Events {
   }
 
   present() {
-    if (EventRepository.getEventByType(MESSAGES.presentDiscount).getStatus()) {
+    if (EventRepository.getEventByType(MESSAGES.presentDiscount).get().status) {
       return MESSAGES.present;
     }
     return MESSAGES.printNoEvent;
@@ -82,8 +81,8 @@ export default class Events {
   totalEventAmount() {
     let eventPrice = 0;
     EventRepository.get().forEach(event => {
-      if (event.getStatus()) {
-        eventPrice += event.getAmount();
+      if (event.get().status) {
+        eventPrice += event.get().amount;
       }
     });
 
@@ -92,7 +91,7 @@ export default class Events {
 
   totalPrice() {
     let price = this.#menus.previousPrice() + this.totalEventAmount();
-    if (EventRepository.getEventByType(MESSAGES.presentDiscount).getStatus()) {
+    if (EventRepository.getEventByType(MESSAGES.presentDiscount).get().status) {
       price += MenuRepository.getMenuByName(SETTING.presentMenu).get().price;
     }
 
@@ -120,7 +119,7 @@ export default class Events {
       return [MESSAGES.printNoEvent];
     }
     EventRepository.get().forEach(event => {
-      if (event.getStatus() && event.getAmount() !== 0) {
+      if (event.get().status && event.get().amount !== 0) {
         result.push(event.print());
       }
     });

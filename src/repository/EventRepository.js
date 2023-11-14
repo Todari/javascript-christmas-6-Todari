@@ -20,7 +20,7 @@ export default class EventRepository {
   }
 
   static getEventByType(type) {
-    const result = this.#events.find(event => event.getType() === type);
+    const result = this.#events.find(event => event.get().type === type);
     if (result === undefined) {
       throw new EventNotExistError();
     }

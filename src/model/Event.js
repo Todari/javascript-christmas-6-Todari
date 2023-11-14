@@ -46,16 +46,8 @@ export default class Event {
     this.#status = bool;
   }
 
-  getAmount() {
-    return this.#amount;
-  }
-
-  getStatus() {
-    return this.#status;
-  }
-
-  getType() {
-    return this.#type;
+  get() {
+    return { type: this.#type, status: this.#status, amount: this.#amount };
   }
 
   print() {
