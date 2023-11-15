@@ -46,6 +46,10 @@ const NO_PRESENT = '크리스마스파스타-1,초코케이크-2,제로콜라-1,
 const NO_PRESENT_MAIN = '초코케이크-2,제로콜라-1,타파스-1';
 const NO_PRESENT_DESSERT = '크리스마스파스타-1,제로콜라-1,타파스-1';
 
+const BADGE_SANTA = ['13', '티본스테이크-2,아이스크림-5'];
+const BADGE_TREE = ['13', '아이스크림-5'];
+const BADGE_STAR = ['13', '아이스크림-3'];
+
 describe('App 다양한 case에서 동작 test', () => {
   beforeEach(() => {
     EventRepository.get().forEach(event => {
@@ -61,6 +65,7 @@ describe('App 다양한 case에서 동작 test', () => {
     await app.run();
 
     const RESULT = [
+      '<주문 메뉴>',
       '<주문 메뉴>',
       '양송이수프 1개',
       '제로콜라 1개',
@@ -798,6 +803,89 @@ describe('App 다양한 case에서 동작 test', () => {
       '32,500원',
       '<12월 이벤트 배지>',
       '없음',
+    ];
+
+    expectLogContains(getOutput(logSpy), RESULT);
+  });
+
+  test('case-25: 이벤트 뱃지가 산타인 경우', async () => {
+    const logSpy = getLogSpy();
+    mockQuestions(BADGE_SANTA);
+    const app = new App();
+    await app.run();
+
+    const RESULT = [
+      '<주문 메뉴>',
+      '티본스테이크 2개',
+      '아이스크림 5개',
+      '<할인 전 총주문 금액>',
+      '135,000원',
+      '<증정 메뉴>',
+      '샴페인 1개',
+      '<혜택 내역>',
+      '크리스마스 디데이 할인: -2,200원',
+      '평일 할인: -10,115원',
+      '증정 이벤트: -25,000원',
+      '<총혜택 금액>',
+      '-37,315원',
+      '<할인 후 예상 결제 금액>',
+      '122,685원',
+      '<12월 이벤트 배지>',
+      '산타',
+    ];
+
+    expectLogContains(getOutput(logSpy), RESULT);
+  });
+
+  test('case-26: 이벤트 뱃지가 트리인 경우', async () => {
+    const logSpy = getLogSpy();
+    mockQuestions(BADGE_TREE);
+    const app = new App();
+    await app.run();
+
+    const RESULT = [
+      '<주문 메뉴>',
+      '아이스크림 5개',
+      '<할인 전 총주문 금액>',
+      '25,000원',
+      '<증정 메뉴>',
+      '없음',
+      '<혜택 내역>',
+      '크리스마스 디데이 할인: -2,200원',
+      '평일 할인: -10,115원',
+      '<총혜택 금액>',
+      '-12,315원',
+      '<할인 후 예상 결제 금액>',
+      '12,685원',
+      '<12월 이벤트 배지>',
+      '트리',
+    ];
+
+    expectLogContains(getOutput(logSpy), RESULT);
+  });
+
+  test('case-26: 이벤트 뱃지가 별인 경우', async () => {
+    const logSpy = getLogSpy();
+    mockQuestions(BADGE_STAR);
+    const app = new App();
+    await app.run();
+
+    const RESULT = [
+      '<주문 메뉴>',
+      '아이스크림 3개',
+      '<할인 전 총주문 금액>',
+      '15,000원',
+      '<증정 메뉴>',
+      '없음',
+      '<혜택 내역>',
+      '크리스마스 디데이 할인: -2,200원',
+      '평일 할인: -6,069원',
+      '<총혜택 금액>',
+      '-8,269원',
+      '<할인 후 예상 결제 금액>',
+      '6,731원',
+      '<12월 이벤트 배지>',
+      '별',
     ];
 
     expectLogContains(getOutput(logSpy), RESULT);
