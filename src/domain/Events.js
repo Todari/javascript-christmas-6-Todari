@@ -26,13 +26,9 @@ export default class Events {
       SETTING.christmasDiscount.default
       + SETTING.christmasDiscount.forDay * (this.#date.get() - 1)
     if (this.#date.get() <= SETTING.date.christmas && amount !== 0) {
-      EventRepository.getEventByType(MESSAGE.christmasDiscount).setStatus(
-        true,
-      );
+      EventRepository.getEventByType(MESSAGE.christmasDiscount).setStatus(true);
     }
-    EventRepository.getEventByType(MESSAGE.christmasDiscount).setAmount(
-      amount,
-    );
+    EventRepository.getEventByType(MESSAGE.christmasDiscount).setAmount(amount);
   }
 
   #setWeekdayDiscount() {

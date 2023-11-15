@@ -50,7 +50,8 @@ export default class Event {
   }
 
   print() {
-    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${MESSAGE.krWon
-      }`;
+    return `${this.#type}: ${this.#amount.toLocaleString(SETTING.locale)}${
+      MESSAGE.krWon
+    }`;
   }
 }
