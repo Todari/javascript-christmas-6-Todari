@@ -25,7 +25,7 @@
 - 크리스마스 프로모션은 [🎯 프로그래밍 요구 사항](../README.md#🎯-프로그래밍-요구-사항)을 만족해야한다.
 
 ---
-![](./image.png);
+![](./image.png)
 
 ## 📱 Domain
 
@@ -298,8 +298,9 @@ export default class EventRepository {
  ┃ ┗ 📜MenuRepository.test.js
  ┗ 📜ApplicationTest.js
 
- 📦docs
- ┗ 📜README.md
+📦docs
+ ┣ 📜README.md
+ ┗ 📜image.png
 
  📦src
  ┣ 📂constant
