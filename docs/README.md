@@ -1,26 +1,22 @@
 # 미션 - 크리스마스 프로모션
 
----
+- [프로젝트 설명](./README.md#📋-프로젝트-설명)
+- [Domain](./README.md#📱-domain)
+  - [GetOrder](./README.md#getorder---날짜-및-메뉴-입력받기)
+  - [Menus](./README.md#menus---메뉴들의-기본-정보-계산-및-반환)
+  - [Events](./README.md#events---이벤트에-대한-정보-계산-및-반환)
+  - [Order](./README.md#order---메뉴들과-이벤트에-대한-정보-반환)
+- [Model](./README.md#🛢️-model)
+  - [Date](./README.md#date---날짜에-대한-정보-반환)
+  - [Menu](./README.md#menu---메뉴에-대한-정보-반환)
+  - [Event](./README.md#event---이벤트에-대한-정보-반환)
+- [Repository](./README.md#💾-repository)
+  - [MenuRepository](./README.md#menurepository---주어진-메뉴-정보-저장)
+  - [EventRepository](./README.md#eventrepository---주어진-이벤트-정보-저장)
+- [기능 구현 목록](./README.md#🛠️-기능-구현-목록)
+- [예외 사항](./README.md#❗️-예외-사항)
+- [파일 구조](./README.md#📂-파일-구조)
 
-1. [프로젝트 설명](#📋-프로젝트-설명)
-2. [Domain](#📱-domain)
-- [GetOrder](#getorder---날짜-및-메뉴-입력받기)
-- [Menus](#menus---메뉴들의-기본-정보-계산-및-반환)
-- [Events](#events---이벤트에-대한-정보-계산-및-반환)
-- [Order](#order---메뉴들과-이벤트에-대한-정보-반환)
-3. [Model](#🛢️-model)
-- [Date](#date---날짜에-대한-정보-반환)
-- [Menu](#menu---메뉴에-대한-정보-반환)
-- [Event](#event---이벤트에-대한-정보-반환)
-4. [Repository](#💾-repository)
-- [MenuRepository](#menurepository---주어진-메뉴-정보-저장)
-- [EventRepository](#eventrepository---주어진-이벤트-정보-저장)
-5. [기능 구현 목록](#🛠️-기능-구현-목록)
-6. [예외 사항](#❗️-예외-사항)
-7. [파일 구조](#📂-파일-구조)
-
-
----
 
 ## 📋 프로젝트 설명
 
