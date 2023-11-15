@@ -2,10 +2,6 @@ import { Console } from '@woowacourse/mission-utils';
 import { MESSAGE, SETTING } from '../constant/index.js';
 
 const OutputView = {
-  printStartOrder() {
-    Console.print(MESSAGE.startOrder);
-  },
-
   printErrorMessage(error) {
     Console.print(error.message);
   },
