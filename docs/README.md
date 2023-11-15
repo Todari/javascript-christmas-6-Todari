@@ -40,13 +40,13 @@
 
 ```javascript
 export default class GetOrder {
-  #order
-  async startOrder()
-  async #readDate()
-  async #readMenus()
-  #validateInputType(string)
-  #validateMenuDuplicated(inputLength, resultLength)
-  #stringToMenus(string)
+  #order;
+  async startOrder();
+  async #readDate();
+  async #readMenus();
+  #validateInputType(string);
+  #validateMenuDuplicated(inputLength, resultLength);
+  #stringToMenus(string);
 }
 ```
 
@@ -63,15 +63,15 @@ export default class GetOrder {
 
 ```javascript
 export default class Menus {
-  #menus
-  constructor(menus)
-  #validateAmounts()
-  #validateOnlyBeverage()
-  list()
-  previousPrice()
-  canApplyEvent()
-  #onlyBeverage()
-  types()
+  #menus;
+  constructor(menus);
+  #validateAmounts();
+  #validateOnlyBeverage();
+  list();
+  previousPrice();
+  canApplyEvent();
+  #onlyBeverage();
+  types();
 }
 ```
 
@@ -91,20 +91,20 @@ export default class Menus {
 
 ```javascript
 export default class Events {
-  #date
-  #menus
-  constructor(date, menus)
-  #set()
-  #setChristmasDiscount()
-  #setWeekdayDiscount()
-  #setWeekendDiscount()
-  #setSpecialDiscount()
-  #setPresentChampagne()
-  present()
-  totalEventAmount()
-  totalPrice()
-  eventBadge()
-  appliedEvents()
+  #date;
+  #menus;
+  constructor(date, menus);
+  #set();
+  #setChristmasDiscount();
+  #setWeekdayDiscount();
+  #setWeekendDiscount();
+  #setSpecialDiscount();
+  #setPresentChampagne();
+  present();
+  totalEventAmount();
+  totalPrice();
+  eventBadge();
+  appliedEvents();
 }
 ```
 
@@ -123,19 +123,19 @@ export default class Events {
 
 ```javascript
 export default class Order {
-  #date
-  #menus
-  #events
-  constructor(date, menus)
-  print()
-  #printResult()
-  #printMenus()
-  #printPreviousPrice()
-  #printPresent()
-  #printEvents()
-  #printEventAmount()
-  #printTotalPrice()
-  #printEventBadge()
+  #date;
+  #menus;
+  #events;
+  constructor(date, menus);
+  print();
+  #printResult();
+  #printMenus();
+  #printPreviousPrice();
+  #printPresent();
+  #printEvents();
+  #printEventAmount();
+  #printTotalPrice();
+  #printEventBadge();
 }
 ```
 
@@ -152,12 +152,11 @@ export default class Order {
 ```javascript
 export default class Date {
   #date;
-
-  constructor(date)
-  #validateDateType(date)
-  hasStar()
-  isWeekend()
-  get()
+  constructor(date);
+  #validateDateType(date);
+  hasStar();
+  isWeekend();
+  get();
 }
 ```
 
@@ -174,11 +173,11 @@ export default class Menu {
   #type;
   #name;
   #price;
-  constructor(name, type, price)
-  get()
-  #validateMenuName(name)
-  #validateMenuType(type)
-  #validateMenuPrice(price)
+  constructor(name, type, price);
+  get();
+  #validateMenuName(name);
+  #validateMenuType(type);
+  #validateMenuPrice(price);
 }
 ```
 
@@ -198,14 +197,14 @@ export default class Event {
   #type;
   #status;
   #amount;
-  constructor(type, status, amount)
-  #validateEventType(type)
-  #validateEventStatus(status)
-  #validateEventAmount(amount)
-  setAmount(amount)
-  setStatus(bool)
-  get()
-  print()
+  constructor(type, status, amount);
+  #validateEventType(type);
+  #validateEventStatus(status);
+  #validateEventAmount(amount);
+  setAmount(amount);
+  setStatus(bool);
+  get();
+  print();
 }
 ```
 
@@ -218,9 +217,9 @@ export default class Event {
 
 ```javascript
 export default class MenuRepository {
-  static #menus
-  static #initMenuRepository()
-  static getMenuByName(name)
+  static #menus;
+  static #initMenuRepository();
+  static getMenuByName(name);
 }
 ```
 
@@ -232,10 +231,10 @@ export default class MenuRepository {
 
 ```javascript
 export default class EventRepository {
-  static #events
-  static #initEventRepository()
-  static getEventByType(type)
-  static get()
+  static #events;
+  static #initEventRepository();
+  static getEventByType(type);
+  static get();
 }
 ```
 
