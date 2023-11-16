@@ -1,5 +1,9 @@
+import { GetOrder } from './domain/index.js';
+
 class App {
-  async run() {}
+  async run() {
+    await new GetOrder().startOrder();
+  }
 }
 
 export default App;
